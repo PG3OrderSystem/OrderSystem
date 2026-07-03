@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderSystem
+namespace OrderSystem.Models
 {
-    class TestClass
+    class ModelClass
     {
-        //aaaaaaaaaaaa
     }
 }
