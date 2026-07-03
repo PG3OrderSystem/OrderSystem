@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace OrderSystem.Views
 {
     /// <summary>
-    /// Interaction logic for SetPage.xaml
+    /// Interaction logic for DrinksControl.xaml
     /// </summary>
-    public partial class SetPage : Page
+    public partial class DrinksControl : UserControl
     {
-        public SetPage()
+        public DrinksControl()
         {
             InitializeComponent();
         }

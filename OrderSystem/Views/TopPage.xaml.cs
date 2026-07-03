@@ -27,7 +27,26 @@ namespace OrderSystem.Views
 
         private void SetBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SetPage());
+            MiddleContent.Content = new SetControl();
         }
+
+        private void SingleBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MiddleContent.Content = new SingleControl();
+        }
+
+        
+
+        private void DrinkBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MiddleContent.Content = new DrinksControl();
+        }
+
+        private void SideBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MiddleContent.Content = new SideControl();
+        }
+
+        
     }
 }
