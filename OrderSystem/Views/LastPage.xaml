@@ -1,0 +1,48 @@
+﻿<Page x:Class="OrderSystem.Views.LastPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OrderSystem.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="700"
+      Title="LastPage">
+
+    <Grid>
+        
+
+        <DataGrid 
+            x:Name="ListDataGrid"  
+            Margin="50,100,50,70" >
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn 
+                Header="商品" 
+                Binding="{Binding ItemID}" 
+                Width="100"/>
+
+                <DataGridTextColumn 
+                Header="単価" 
+                Binding="{Binding Price}" 
+                Width="70"/>
+
+                <DataGridTextColumn 
+                Header="個数"   
+                Binding="{Binding Quantity}" 
+                Width="*"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+
+        <Button 
+            x:Name="BackBtn" 
+            Content="🔙" 
+            HorizontalAlignment="Left" 
+            Margin="30,30,0,0" 
+            VerticalAlignment="Top" 
+            Width="30" Height="20" Click="BackBtn_Click"/>
+
+    </Grid>
+</Page>

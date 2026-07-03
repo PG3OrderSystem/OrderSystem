@@ -17,14 +17,14 @@
                 Content="フライドポテト" 
                 HorizontalAlignment="Left" 
                 Height="70" 
-                Margin="26,55,0,0" 
+                Margin="10,10,0,0" 
                 VerticalAlignment="Top" 
                 Width="123"/>
         <Button x:Name="SideNuggetsBtn"
                 Content="ナゲット" 
                 HorizontalAlignment="Left" 
                 Height="70" 
-                Margin="190,53,0,0" 
+                Margin="200,10,0,0" 
                 VerticalAlignment="Top" 
                 Width="123"/>
 

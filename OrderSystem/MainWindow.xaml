@@ -9,9 +9,8 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
 
-        <Frame x:Name="MainFrame" 
-               Grid.Row="1" 
-               NavigationUIVisibility="Hidden"/>
-        
+        <Frame 
+            x:Name="PageFrame"
+            NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
