@@ -24,5 +24,10 @@ namespace OrderSystem.Views
         {
             InitializeComponent();
         }
+
+        private void SetBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SetPage());
+        }
     }
 }
