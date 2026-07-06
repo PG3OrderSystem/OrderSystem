@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrderSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -64,12 +65,10 @@ namespace OrderSystem.Views
 
         private void ManagementBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("管理者用ページに移動します。", "管理者ページ", MessageBoxButton.YesNo, MessageBoxImage.Information);
+            LoginWindow loginWindow = new LoginWindow();
 
-            if (MessageBoxResult.Yes == MessageBox.Show("管理者用ページに移動します。\nよろしいですか？", "管理者ページ", MessageBoxButton.YesNo, MessageBoxImage.Question))
-            {
-                NavigationService.Navigate(new Views.ManagementPage());
-            }
+            loginWindow.Show();
+
 
         }
 }

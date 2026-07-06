@@ -15,16 +15,3 @@ public partial class Product
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 }
-
-
-/*
- 
- CREATE TABLE [dbo].[Products] (
-    [ProductId]   NVARCHAR (10) NOT NULL,
-    [ProductName] NVARCHAR (50) NOT NULL,
-    [Price]       INT           NOT NULL,
-    [Category]    NVARCHAR (20) NOT NULL,
-    PRIMARY KEY CLUSTERED ([ProductId] ASC)
-);
- 
- */

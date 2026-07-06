@@ -10,7 +10,10 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+
+
 
 namespace OrderSystem.Views
 {
@@ -22,6 +25,15 @@ namespace OrderSystem.Views
         public LoginWindow()
         {
             InitializeComponent();
+        }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //MainWindow.PageFrame.Navigate(new Views.ManagementPage());
+
+
+            this.Close();
+
         }
     }
 }
