@@ -61,5 +61,16 @@ namespace OrderSystem.Views
         {
             NavigationService.Navigate(new Views.LastPage());
         }
-    }
+
+        private void ManagementBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("管理者用ページに移動します。", "管理者ページ", MessageBoxButton.YesNo, MessageBoxImage.Information);
+
+            if (MessageBoxResult.Yes == MessageBox.Show("管理者用ページに移動します。\nよろしいですか？", "管理者ページ", MessageBoxButton.YesNo, MessageBoxImage.Question))
+            {
+                NavigationService.Navigate(new Views.ManagementPage());
+            }
+
+        }
+}
 }
