@@ -21,7 +21,7 @@
 
         <DataGrid 
             x:Name="dataGridProducts"  
-            Margin="50,100,50,70"
+            Margin="50,150,50,20"
             AutoGenerateColumns="False">
 
             <DataGrid.Columns>
@@ -57,7 +57,7 @@
             HorizontalAlignment="Left" 
             Margin="30,30,0,0" 
             VerticalAlignment="Top" 
-            Width="30" Height="20" 
+            Width="80" Height="40" 
             Click="TopPageBtn_Click" />
 
     </Grid>

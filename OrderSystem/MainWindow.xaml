@@ -11,6 +11,10 @@
 
         <Frame 
             x:Name="PageFrame"
+            
             NavigationUIVisibility="Hidden"/>
+
+        
+        
     </Grid>
 </Window>

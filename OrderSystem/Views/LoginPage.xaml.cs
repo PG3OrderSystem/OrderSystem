@@ -13,27 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
-
 namespace OrderSystem.Views
 {
     /// <summary>
-    /// LoginWindow.xaml の相互作用ロジック
+    /// Interaction logic for LoginPage.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class LoginPage : Page
     {
-        public LoginWindow()
+        public LoginPage()
         {
             InitializeComponent();
         }
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            //MainWindow.PageFrame.Navigate(new Views.ManagementPage());
+            NavigationService.Navigate(new ManagementPage());
+        }
 
-
-            this.Close();
-
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TopPage());
         }
     }
 }

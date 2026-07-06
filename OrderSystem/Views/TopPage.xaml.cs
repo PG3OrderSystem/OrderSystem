@@ -65,9 +65,7 @@ namespace OrderSystem.Views
 
         private void ManagementBtn_Click(object sender, RoutedEventArgs e)
         {
-            LoginWindow loginWindow = new LoginWindow();
-
-            loginWindow.Show();
+            NavigationService.Navigate(new Views.LoginPage());
 
 
         }
