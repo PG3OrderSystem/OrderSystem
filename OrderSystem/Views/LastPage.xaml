@@ -18,19 +18,26 @@
             <DataGrid.Columns>
 
                 <DataGridTextColumn 
-                Header="商品" 
-                Binding="{Binding ItemID}" 
-                Width="100"/>
+                    Header="商品" 
+                    Binding="{Binding ItemID}" 
+                    Width="*"/>
 
                 <DataGridTextColumn 
-                Header="単価" 
-                Binding="{Binding Price}" 
-                Width="70"/>
+                    Header="単価" 
+                    Binding="{Binding Price}" 
+                    Width="*"/>
 
                 <DataGridTextColumn 
-                Header="個数"   
-                Binding="{Binding Quantity}" 
-                Width="*"/>
+                    Header="個数"   
+                    Binding="{Binding Quantity}" 
+                    Width="*"/>
+
+                <DataGridTextColumn 
+                    Header="合計"   
+                    Binding="{Binding SubTotal}" 
+                    Width="*"/>
+
+
             </DataGrid.Columns>
 
         </DataGrid>
