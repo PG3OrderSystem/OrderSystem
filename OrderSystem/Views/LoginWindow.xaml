@@ -1,0 +1,16 @@
+﻿<Window x:Class="OrderSystem.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OrderSystem.Views"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="200" Width="350">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Margin="129,43,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="129,79,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="48,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ja-jp" Text="ID"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="48,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ja-jp" Text="PASSWORD"/></TextBlock>
+
+    </Grid>
+</Window>
