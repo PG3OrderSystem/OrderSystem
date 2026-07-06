@@ -25,10 +25,36 @@ namespace OrderSystem.Views
             InitializeComponent();
         }
 
+
+
+        private bool CheckLogin(string id, string password)
+        {
+            using (var context = new Models.OrderDBContext())
+            {
+                var admin = context.Admins
+                    .FirstOrDefault(a => a.AdminId == id && a.Password == password);
+
+                return admin != null;  // true if found, false if not
+            }
+        }
+
+
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ManagementPage());
+            string id = AdminTxtBox.Text;
+            string password = PassTxtBox.Text;
+
+            if (CheckLogin(id, password))
+            {
+                NavigationService.Navigate(new ManagementPage());
+            }
+            else
+            {
+                MessageBox.Show("Id・Passwordが違います。");
+            }
         }
+
+        
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
