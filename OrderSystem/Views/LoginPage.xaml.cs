@@ -42,7 +42,7 @@ namespace OrderSystem.Views
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
             string id = AdminTxtBox.Text;
-            string password = PassTxtBox.Text;
+            string password = PassTxtBox.Password;
 
             if (CheckLogin(id, password))
             {

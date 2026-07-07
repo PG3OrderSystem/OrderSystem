@@ -36,14 +36,19 @@
             Text="Password" 
             VerticalAlignment="Top" 
             FontSize="16"/>
-        <TextBox 
+        <PasswordBox 
             x:Name="PassTxtBox"
+            PasswordChar="•"
             HorizontalAlignment="Center" 
             Margin="0,160,0,0" 
-            TextWrapping="Wrap" 
             VerticalAlignment="Top" 
             Width="150" Height="40"/>
 
+
+        
+        
+        
+        
         <Button 
             x:Name="LoginBtn" 
             Content="Login" 
@@ -59,8 +64,9 @@
             HorizontalAlignment="Center" 
             Margin="0,320,0,0" 
             VerticalAlignment="Top" 
-            Height="50" Width="100" Click="CancelBtn_Click" 
-            />
+            Height="50" Width="100" 
+            Click="CancelBtn_Click"/>
+
 
 
 

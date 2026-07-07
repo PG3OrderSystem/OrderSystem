@@ -174,6 +174,14 @@ namespace OrderSystem.Views
                         );
                     }
 
+
+                    //ProductIdTxtBox.Text = id;
+                    //ProductNameTxtBox.Text = name;
+                    //ProductPriceTxtBox.Text = priceText;
+                    //CategoryComboBox.ItemsSource = category;
+
+
+
                     var results = query.ToList();
 
                     if (results.Any())
