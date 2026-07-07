@@ -23,6 +23,7 @@ namespace OrderSystem.Views
         public LoginPage()
         {
             InitializeComponent();
+            AdminTxtBox.Focus();
         }
 
 

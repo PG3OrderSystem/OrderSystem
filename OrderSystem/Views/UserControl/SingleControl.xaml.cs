@@ -26,8 +26,6 @@ namespace OrderSystem.Views
             LoadProducts("Single");
         }
 
-
-
         private void LoadProducts(string category)
         {
             using (var context = new Models.OrderDBContext())
@@ -42,7 +40,7 @@ namespace OrderSystem.Views
                     {
                         // Display name + price on the button
                         Content = $"{product.ProductName}\n¥{product.Price}",
-                        Width = 123,
+                        Width = 120,
                         Height = 70,
                         Margin = new Thickness(10),
                         Tag = product

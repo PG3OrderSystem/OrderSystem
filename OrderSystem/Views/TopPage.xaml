@@ -24,62 +24,69 @@
             x:Name="SetBtn" 
             Content="セット" 
             HorizontalAlignment="Left" 
-            Margin="35,77,0,0" 
+            Margin="20,79,0,0" 
             VerticalAlignment="Top" 
-            Height="50" Width="80" 
+            Height="50" Width="60" 
             Click="SetBtn_Click"/>
 
         <Button 
             x:Name="SingleBtn" 
             Content="単品" 
             HorizontalAlignment="Left" 
-            Margin="35,157,0,0" 
+            Margin="20,159,0,0" 
             VerticalAlignment="Top" 
-            Height="50" Width="80" 
+            Height="50" Width="60" 
             Click="SingleBtn_Click"/>
 
         <Button 
             x:Name="DrinkBtn" 
             Content="ドリンク" 
             HorizontalAlignment="Left" 
-            Margin="35,237,0,0" 
+            Margin="20,239,0,0" 
             VerticalAlignment="Top" 
-            Height="50" Width="80" 
+            Height="50" Width="60" 
             Click="DrinkBtn_Click"/>
 
         <Button 
             x:Name="SideBtn" 
             Content="サイド" 
             HorizontalAlignment="Left" 
-            Margin="35,317,0,0" 
+            Margin="20,319,0,0" 
             VerticalAlignment="Top" 
             Height="50" 
-            Width="80" 
+            Width="60" 
             Click="SideBtn_Click"/>
 
         <DataGrid 
             x:Name="ListDataGrid"  
-            Margin="520,70,30,120"
+            Margin="400,70,30,120"
             AutoGenerateColumns="False">
 
-        <DataGrid.Columns>
-            
-            <DataGridTextColumn 
+            <DataGrid.Columns>
+
+                <DataGridTextColumn 
                 Header="商品" 
                 Binding="{Binding ItemID}" 
                 Width="80"/>
-            
-            <DataGridTextColumn 
+
+                <DataGridTextColumn 
                 Header="単価" 
                 Binding="{Binding Price}" 
                 Width="50"/>
-            
-            <DataGridTextColumn 
+
+                <DataGridTextColumn 
                 Header="個数"   
                 Binding="{Binding Quantity}" 
+                Width="35"/>
+                <DataGridTextColumn 
+                Header="小計"   
+                Binding="{Binding Subtotal}" 
                 Width="*"/>
-            </DataGrid.Columns>
 
+
+
+
+            </DataGrid.Columns>
         </DataGrid>
 
         <Button 
@@ -115,7 +122,7 @@
             x:Name="ClearBtn" 
             Content="全削除" 
             HorizontalAlignment="Left" 
-            Margin="520,350,0,0" 
+            Margin="446,350,0,0" 
             VerticalAlignment="Top"
             Height="30" Width="60" 
             Click="ClearBtn_Click"/>
@@ -133,9 +140,8 @@
 
         <ContentControl 
             x:Name="MiddleContent"
-            Margin="130,80,220,70" 
-            Height="300" 
-            Width="350"/>
+            Margin="90,74,310,66" 
+            Width="300"/>
 
 
 
