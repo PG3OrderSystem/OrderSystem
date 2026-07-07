@@ -12,11 +12,88 @@
 
         <TextBlock 
             HorizontalAlignment="Left" 
-            Margin="295,30,0,0" 
+            Margin="295,5,0,0" 
             TextWrapping="Wrap" 
-            Text="商品一覧" 
+            Text="商品管理" 
             VerticalAlignment="Top" 
-            Height="30" Width="80"/>
+            Height="18" Width="80" 
+            TextAlignment="Center"/>
+
+
+        <Button 
+            x:Name="AddBtn" 
+            Content="追加" 
+            HorizontalAlignment="Left" 
+            Margin="180,58,0,0" 
+            VerticalAlignment="Top" 
+            Width="80" Height="40" 
+            Click="AddBtn_Click"/>
+
+        <Button 
+            x:Name="UpdateBtn" 
+            Content="更新" 
+            HorizontalAlignment="Left" 
+            Margin="265,58,0,0" 
+            VerticalAlignment="Top" 
+            Width="80" Height="40" 
+            Click="UpdateBtn_Click"/>
+
+        <Button 
+            x:Name="DeleteBtn" 
+            Content="削除" 
+            HorizontalAlignment="Left" 
+            Margin="350,58,0,0" 
+            VerticalAlignment="Top" 
+            Width="80" Height="40" 
+            Click="DeleteBtn_Click"/>
+
+        <Button 
+            x:Name="SearchBtn" 
+            Content="検索" 
+            HorizontalAlignment="Left" 
+            Margin="437,58,0,0" 
+            VerticalAlignment="Top" 
+            Width="80" Height="40" 
+            Click="SearchBtn_Click"/>
+
+
+        <TextBox 
+            x:Name="ProductIdTxtBox" 
+            HorizontalAlignment="Left" 
+            Margin="55,115,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Width="112" Height="30"/>
+
+        <TextBox 
+            x:Name="ProductNameTxtBox" 
+            HorizontalAlignment="Left" 
+            Margin="175,115,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Width="192" Height="30"/>
+
+
+        <TextBox 
+            x:Name="ProductPriceTxtBox" 
+            HorizontalAlignment="Left" 
+            Margin="376,115,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Width="90" Height="30"/>
+
+        <ComboBox 
+            x:Name="CategoryComboBox"
+            HorizontalAlignment="Left" 
+            Margin="480,115,0,0" 
+            VerticalAlignment="Top" 
+            Width="102" Height="30">
+            <ComboBoxItem Content="Set"/>
+            <ComboBoxItem Content="Single"/>
+            <ComboBoxItem Content="Drinks"/>
+            <ComboBoxItem Content="Side"/>
+        </ComboBox>
+
 
 
         <DataGrid 
@@ -29,12 +106,12 @@
                 <DataGridTextColumn 
                     Header="商品ID" 
                     Binding="{Binding ProductId}" 
-                    Width="100"/>
+                    Width="120"/>
 
                 <DataGridTextColumn 
                     Header="商品" 
                     Binding="{Binding ProductName}" 
-                    Width="100"/>
+                    Width="200"/>
 
                 <DataGridTextColumn 
                     Header="単価" 
@@ -52,13 +129,23 @@
 
 
         <Button 
-            x:Name="TopPageBtn" 
-            Content="TopPage" 
+            x:Name="LogoutBtn" 
+            Content="Logout" 
             HorizontalAlignment="Left" 
-            Margin="30,30,0,0" 
+            Margin="20,20,0,0" 
             VerticalAlignment="Top" 
             Width="80" Height="40" 
-            Click="TopPageBtn_Click" />
+            Click="LogoutBtn_Click" />
+
+        <Button 
+            x:Name="ClearBtn" 
+            Content="Clear" 
+            HorizontalAlignment="Left" 
+            Margin="600,20,0,0" 
+            VerticalAlignment="Top" 
+            Width="80" Height="40" 
+            Click="ClearBtn_Click" />
+
 
     </Grid>
 </Page>

@@ -34,7 +34,7 @@ namespace OrderSystem.Views
                 var admin = context.Admins
                     .FirstOrDefault(a => a.AdminId == id && a.Password == password);
 
-                return admin != null;  // true if found, false if not
+                return admin != null;
             }
         }
 
