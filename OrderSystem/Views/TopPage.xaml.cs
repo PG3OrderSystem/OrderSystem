@@ -24,7 +24,65 @@ namespace OrderSystem.Views
         public TopPage()
         {
             InitializeComponent();
+            ListDataGrid.ItemsSource = cartItems;
         }
+
+
+        private List<CartItem> cartItems = new List<CartItem>();
+
+
+        public class CartItem
+        {
+            public string ItemID { get; set; }   // 商品名
+            public int Price { get; set; }       // 単価
+            public int Quantity { get; set; }    // 個数
+            public int Subtotal { get; set; }   // 小計 = Price × Quantity
+        }
+
+
+        public void AddToCart(Models.Products product)
+        {
+            // Check if this product is already in the cart
+            var existing = cartItems.FirstOrDefault(c => c.ItemID == product.ProductName);
+
+            if (existing != null)
+            {
+                // Already in cart → just increase quantity
+                existing.Quantity++;
+                existing.Subtotal = existing.Price * existing.Quantity;
+            }
+            else
+            {
+                // Not in cart yet → add new row
+                cartItems.Add(new CartItem
+                {
+                    ItemID = product.ProductName,
+                    Price = product.Price,
+                    Quantity = 1,
+                    Subtotal = product.Price
+                });
+            }
+
+            // Refresh the DataGrid to show the changes
+            ListDataGrid.Items.Refresh();
+
+            // Update the total amount text
+            int total = cartItems.Sum(c => c.Subtotal);
+            TotalSumTxtBlock.Text = $"合計: ¥{total}";
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void CallStaffBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -33,34 +91,38 @@ namespace OrderSystem.Views
 
         private void SetBtn_Click(object sender, RoutedEventArgs e)
         {
-            MiddleContent.Content = new SetControl();
+            MiddleContent.Content = new SetControl(this);
         }
 
         private void SingleBtn_Click(object sender, RoutedEventArgs e)
         {
-            MiddleContent.Content = new SingleControl();
+            MiddleContent.Content = new SingleControl(this);
         }
 
         
 
         private void DrinkBtn_Click(object sender, RoutedEventArgs e)
         {
-            MiddleContent.Content = new DrinksControl();
+            MiddleContent.Content = new DrinksControl(this);
         }
 
         private void SideBtn_Click(object sender, RoutedEventArgs e)
         {
-            MiddleContent.Content = new SideControl();
+            MiddleContent.Content = new SideControl(this);
         }
 
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
+            cartItems.Clear();
 
+            ListDataGrid.Items.Refresh();
+
+            TotalSumTxtBlock.Text = "合計: ¥0";
         }
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Views.LastPage());
+            NavigationService.Navigate(new Views.LastPage(cartItems));
         }
 
         private void ManagementBtn_Click(object sender, RoutedEventArgs e)
@@ -69,5 +131,30 @@ namespace OrderSystem.Views
 
 
         }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+    }
 }

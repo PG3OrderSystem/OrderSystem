@@ -9,11 +9,11 @@
       Title="LastPage">
 
     <Grid>
-        
+
 
         <DataGrid 
             x:Name="ListDataGrid"  
-            Margin="50,100,50,70"
+            Margin="50,78,50,92"
             AutoGenerateColumns="False">
 
             <DataGrid.Columns>
@@ -35,7 +35,7 @@
 
                 <DataGridTextColumn 
                     Header="合計"   
-                    Binding="{Binding SubTotal}" 
+                    Binding="{Binding Subtotal}" 
                     Width="*"/>
 
 
@@ -48,9 +48,29 @@
             x:Name="BackBtn" 
             Content="🔙" 
             HorizontalAlignment="Left" 
-            Margin="30,30,0,0" 
+            Margin="20,20,0,0" 
             VerticalAlignment="Top" 
             Width="30" Height="20" Click="BackBtn_Click"/>
+
+
+        <TextBlock 
+            x:Name="TotalSumTxtBlock" 
+            HorizontalAlignment="Left" 
+            Margin="499,360,0,0" 
+            TextWrapping="Wrap" 
+            Text="合計: ¥0" 
+            FontSize="20"
+            VerticalAlignment="Top" 
+            Height="30" Width="140"/>
+        
+        
+        <TextBlock 
+            x:Name="OrderIdTxtBlock" 
+            HorizontalAlignment="Left" 
+            Margin="159,20,0,0" 
+            TextWrapping="Wrap" 
+            Text="注文ID：" 
+            VerticalAlignment="Top"/>
 
     </Grid>
 </Page>

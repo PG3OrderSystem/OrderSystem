@@ -20,9 +20,12 @@ namespace OrderSystem.Views
     /// </summary>
     public partial class SingleControl : UserControl
     {
-        public SingleControl()
+        private TopPage _parentPage;
+
+        public SingleControl(TopPage parentPage)
         {
             InitializeComponent();
+            _parentPage = parentPage;
             LoadProducts("Single");
         }
 
@@ -44,6 +47,14 @@ namespace OrderSystem.Views
                         Height = 70,
                         Margin = new Thickness(10),
                         Tag = product
+                    };
+
+                    //ProductPanel.Children.Add(btn);
+
+                    btn.Click += (s, e) =>
+                    {
+                        var clickedProduct = (Models.Products)((Button)s).Tag;
+                        _parentPage.AddToCart(clickedProduct);
                     };
 
                     ProductPanel.Children.Add(btn);

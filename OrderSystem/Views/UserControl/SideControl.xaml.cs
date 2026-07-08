@@ -20,9 +20,12 @@ namespace OrderSystem.Views
     /// </summary>
     public partial class SideControl : UserControl
     {
-        public SideControl()
+        private TopPage _parentPage;
+
+        public SideControl(TopPage parentPage)
         {
             InitializeComponent();
+            _parentPage = parentPage;
             LoadProducts("Side");
         }
 
@@ -46,6 +49,12 @@ namespace OrderSystem.Views
                         Height = 70,
                         Margin = new Thickness(10),
                         Tag = product
+                    };
+
+                    btn.Click += (s, e) =>
+                    {
+                        var clickedProduct = (Models.Products)((Button)s).Tag;
+                        _parentPage.AddToCart(clickedProduct);
                     };
 
                     ProductPanel.Children.Add(btn);

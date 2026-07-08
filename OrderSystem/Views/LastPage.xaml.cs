@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static OrderSystem.Views.TopPage;
 
 namespace OrderSystem.Views
 {
@@ -20,14 +21,19 @@ namespace OrderSystem.Views
     /// </summary>
     public partial class LastPage : Page
     {
-        public LastPage()
+        public LastPage(List<CartItem> cartItems)
         {
             InitializeComponent();
+            ListDataGrid.ItemsSource = cartItems;
+            int total = cartItems.Sum(c => c.Subtotal);
+            TotalSumTxtBlock.Text = $"合計: ¥{total}";
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Views.TopPage());
         }
+
+
     }
 }
