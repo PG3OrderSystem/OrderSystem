@@ -66,8 +66,8 @@
 
                 <DataGridTextColumn 
                 Header="商品" 
-                Binding="{Binding ItemID}" 
-                Width="80"/>
+                Binding="{Binding ProductName}" 
+                Width="110"/>
 
                 <DataGridTextColumn 
                 Header="単価" 
@@ -113,7 +113,7 @@
             HorizontalAlignment="Left" 
             Margin="538,318,0,0" 
             TextWrapping="Wrap" 
-            Text="合計：" 
+            Text="合計: ¥0" 
             VerticalAlignment="Top" 
             Width="120" Height="25"/>
 

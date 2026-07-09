@@ -20,7 +20,7 @@
 
                 <DataGridTextColumn 
                     Header="商品" 
-                    Binding="{Binding ItemID}" 
+                    Binding="{Binding ProductName}" 
                     Width="*"/>
 
                 <DataGridTextColumn 

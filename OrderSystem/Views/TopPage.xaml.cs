@@ -33,17 +33,20 @@ namespace OrderSystem.Views
 
         public class CartItem
         {
-            public string ItemID { get; set; }   // 商品名
-            public int Price { get; set; }       // 単価
-            public int Quantity { get; set; }    // 個数
-            public int Subtotal { get; set; }   // 小計 = Price × Quantity
+            public string ProductId { get; set; }
+            public string ProductName { get; set; }
+            public int Price { get; set; }
+            public int Quantity { get; set; }
+            public int Subtotal { get; set; }
+            
+
         }
 
 
         public void AddToCart(Models.Products product)
         {
             // Check if this product is already in the cart
-            var existing = cartItems.FirstOrDefault(c => c.ItemID == product.ProductName);
+            var existing = cartItems.FirstOrDefault(c => c.ProductId == product.ProductId);
 
             if (existing != null)
             {
@@ -56,7 +59,8 @@ namespace OrderSystem.Views
                 // Not in cart yet → add new row
                 cartItems.Add(new CartItem
                 {
-                    ItemID = product.ProductName,
+                    ProductId = product.ProductId,
+                    ProductName = product.ProductName,
                     Price = product.Price,
                     Quantity = 1,
                     Subtotal = product.Price
@@ -99,7 +103,7 @@ namespace OrderSystem.Views
             MiddleContent.Content = new SingleControl(this);
         }
 
-        
+
 
         private void DrinkBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -122,14 +126,46 @@ namespace OrderSystem.Views
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Views.LastPage(cartItems));
+            //NavigationService.Navigate(new Views.LastPage(cartItems));
+
+            if (cartItems.Count == 0)
+            {
+                MessageBox.Show("商品を選択してください", "注文エラー", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            using (var context = new OrderDBContext())
+            {
+                var order = new Order
+                {
+                    DateTime = DateTime.Now,
+                    TotalAmount = cartItems.Sum(c => c.Subtotal)
+                };
+                context.Orders.Add(order);
+                context.SaveChanges();
+
+                foreach (var item in cartItems)
+                {
+                    var detail = new OrderDetail
+                    {
+                        OrderId = order.OrderId,
+                        ProductId = item.ProductId,
+                        Quantity = item.Quantity,
+                        Subtotal = item.Subtotal
+                    };
+                    context.OrderDetails.Add(detail);
+                }
+                context.SaveChanges();
+
+                NavigationService.Navigate(new LastPage(cartItems, order.OrderId));
+            }
         }
+
+    
+        
 
         private void ManagementBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Views.LoginPage());
-
-
         }
 
 

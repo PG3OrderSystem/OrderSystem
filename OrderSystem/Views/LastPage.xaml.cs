@@ -21,12 +21,13 @@ namespace OrderSystem.Views
     /// </summary>
     public partial class LastPage : Page
     {
-        public LastPage(List<CartItem> cartItems)
+        public LastPage(List<CartItem> cartItems, int orderId)
         {
             InitializeComponent();
             ListDataGrid.ItemsSource = cartItems;
             int total = cartItems.Sum(c => c.Subtotal);
             TotalSumTxtBlock.Text = $"合計: ¥{total}";
+            OrderIdTxtBlock.Text = $"注文ID: {orderId}";
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
