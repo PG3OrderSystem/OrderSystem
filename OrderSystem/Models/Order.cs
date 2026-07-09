@@ -13,3 +13,17 @@ public partial class Order
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 }
+
+
+/*
+ 
+ CREATE TABLE [dbo].[Orders] (
+    [OrderId]     INT      IDENTITY (1, 1) NOT NULL,
+    [DateTime]    DATETIME NOT NULL,
+    [TotalAmount] INT      NOT NULL,
+    PRIMARY KEY CLUSTERED ([OrderId] ASC)
+);
+
+
+ 
+ */

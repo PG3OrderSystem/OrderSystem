@@ -32,39 +32,34 @@ namespace OrderSystem.Views
 
 
 
+
+
         private void LoadProducts(string category)
         {
-            using (var context = new Models.OrderDBContext())
+            var products = DataAccess.GetProductsByCategory(category);
+
+            foreach (var product in products)
             {
-                var products = context.Products
-                    .Where(p => p.Category == category)
-                    .ToList();
-
-                foreach (var product in products)
+                var btn = new Button
                 {
-                    var btn = new Button
-                    {
-                        // Display name + price on the button
-                        Content = $"{product.ProductName}\n¥{product.Price}",
-                        Width = 120,
-                        Height = 70,
-                        Margin = new Thickness(10),
-                        Tag = product
-                    };
+                    // Display name + price on the button
+                    Content = $"{product.ProductName}\n¥{product.Price}",
+                    Width = 120,
+                    Height = 70,
+                    Margin = new Thickness(10),
+                    Tag = product
+                };
 
-                    //ProductPanel.Children.Add(btn);
+                //ProductPanel.Children.Add(btn);
 
-                    btn.Click += (s, e) =>
-                    {
-                        var clickedProduct = (Models.Products)((Button)s).Tag;
-                        _parentPage.AddToCart(clickedProduct);
-                    };
+                btn.Click += (s, e) =>
+                {
+                    var clickedProduct = (Models.Products)((Button)s).Tag;
+                    _parentPage.AddToCart(clickedProduct);
+                };
 
-                    ProductPanel.Children.Add(btn);
-                }
+                ProductPanel.Children.Add(btn);
             }
         }
-
-
     }
 }

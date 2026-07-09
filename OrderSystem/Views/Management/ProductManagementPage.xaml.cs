@@ -33,11 +33,7 @@ namespace OrderSystem.Views
         {
             try
             {
-                using (var context = new OrderDBContext())
-                {
-                    var products = context.Products.OrderBy(x => x.ProductId).ToList();
-                    dataGridProducts.ItemsSource = products;
-                }
+                    dataGridProducts.ItemsSource = DataAccess.GetAllProducts();
             }
             catch (Exception ex)
             {
@@ -46,10 +42,7 @@ namespace OrderSystem.Views
             }
         }
 
-        private void BackBtn_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
-        }
+        
 
 
 
@@ -57,21 +50,18 @@ namespace OrderSystem.Views
         {
             try
             {
-                using (var context = new OrderDBContext())
+                var products = new Products
                 {
-                    var products = new Products
-                    {
-                        ProductId = ProductIdTxtBox.Text,
-                        ProductName = ProductNameTxtBox.Text,
-                        Price = int.Parse(ProductPriceTxtBox.Text),
-                        Category = (CategoryComboBox.SelectedItem as ComboBoxItem)?.Content.ToString()
-                    };
-                    context.Products.Add(products);
-                    context.SaveChanges();
-                    MessageBox.Show("情報を追加しました。");
-                    LoadItems();
-                    Clear();
-                }
+                    ProductId = ProductIdTxtBox.Text,
+                    ProductName = ProductNameTxtBox.Text,
+                    Price = int.Parse(ProductPriceTxtBox.Text),
+                    Category = (CategoryComboBox.SelectedItem as ComboBoxItem)?.Content.ToString()
+                };
+                DataAccess.AddProduct(products);
+                MessageBox.Show("情報を追加しました。");
+                LoadItems();
+                Clear();
+                
             }
             catch (Exception ex)
             {
@@ -83,27 +73,17 @@ namespace OrderSystem.Views
         {
             try
             {
-                using (var context = new OrderDBContext())
+                var product = new Products
                 {
-                    string id = ProductIdTxtBox.Text;
-                    var product = context.Products.Find(id);
-
-                    if (product != null)
-                    {
-                        product.ProductName = ProductNameTxtBox.Text;
-                        product.Price = int.Parse(ProductPriceTxtBox.Text);
-                        product.Category = (CategoryComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
-
-                        context.SaveChanges();
-                        MessageBox.Show("商品情報を更新しました。");
-                        LoadItems();
-                        Clear();
-                    }
-                    else
-                    {
-                        MessageBox.Show("該当する商品が見つかりません。");
-                    }
-                }
+                    ProductId = ProductIdTxtBox.Text,
+                    ProductName = ProductNameTxtBox.Text,
+                    Price = int.Parse(ProductPriceTxtBox.Text),
+                    Category = (CategoryComboBox.SelectedItem as ComboBoxItem)?.Content.ToString()
+                };
+                DataAccess.UpdateProduct(product);
+                MessageBox.Show("商品情報を更新しました。");
+                LoadItems();
+                Clear();
             }
             catch (Exception ex)
             {
@@ -118,26 +98,11 @@ namespace OrderSystem.Views
                 var result = MessageBox.Show("本当に削除しますか？", "確認", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    using (var context = new OrderDBContext())
-                    {
-                        string id = ProductIdTxtBox.Text;
-                        var product = context.Products.Find(id);
+                    DataAccess.DeleteProduct(ProductIdTxtBox.Text);
+                    MessageBox.Show("商品情報を削除しました。");
+                    LoadItems();
+                    Clear();
 
-                        if (product != null)
-                        {
-                            context.Products.Remove(product);
-                            context.SaveChanges();
-
-                            MessageBox.Show("商品情報を削除しました。");
-                            LoadItems();
-                            Clear();
-                        }
-                        else
-                        {
-                            MessageBox.Show("該当する商品が見つかりません。");
-                        }
-
-                    }
                 }
             }
             catch (Exception ex)
@@ -150,48 +115,20 @@ namespace OrderSystem.Views
         {
             try
             {
-                using (var context = new OrderDBContext())
+                string id = ProductIdTxtBox.Text.Trim();
+                string name = ProductNameTxtBox.Text.Trim();
+                string priceText = ProductPriceTxtBox.Text.Trim();
+                string category = (CategoryComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+                var results = DataAccess.SearchProducts(id, name, category, priceText);
+
+                if (results.Any())
                 {
-                    string id = ProductIdTxtBox.Text.Trim();
-                    string name = ProductNameTxtBox.Text.Trim();
-                    string priceText = ProductPriceTxtBox.Text.Trim();
-                    string category = (CategoryComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
-
-                    var query = context.Products.AsQueryable();
-
-                    bool anyInput = !string.IsNullOrWhiteSpace(id)
-                        || !string.IsNullOrWhiteSpace(name)
-                        || !string.IsNullOrWhiteSpace(category)
-                        || !string.IsNullOrWhiteSpace(priceText);
-
-                    if (anyInput)
-                    {
-                        query = query.Where(p =>
-                            (!string.IsNullOrWhiteSpace(id) && p.ProductId.Contains(id)) ||
-                            (!string.IsNullOrWhiteSpace(name) && p.ProductName.Contains(name)) ||
-                            (!string.IsNullOrWhiteSpace(category) && p.Category == category) ||
-                            (!string.IsNullOrWhiteSpace(priceText) && p.Price.ToString().Contains(priceText))
-                        );
-                    }
-
-
-                    //ProductIdTxtBox.Text = id;
-                    //ProductNameTxtBox.Text = name;
-                    //ProductPriceTxtBox.Text = priceText;
-                    //CategoryComboBox.ItemsSource = category;
-
-
-
-                    var results = query.ToList();
-
-                    if (results.Any())
-                    {
-                        dataGridProducts.ItemsSource = results;
-                    }
-                    else
-                    {
-                        MessageBox.Show("入力されたデータがありません。");
-                    }
+                    dataGridProducts.ItemsSource = results;
+                }
+                else
+                {
+                    MessageBox.Show("入力されたデータがありません。");
                 }
             }
             catch (Exception ex)
@@ -211,6 +148,11 @@ namespace OrderSystem.Views
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
             Clear();
+        }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

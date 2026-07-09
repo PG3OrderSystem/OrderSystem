@@ -34,5 +34,10 @@ namespace OrderSystem.Views.Management
         {
             NavigationService.Navigate(new ReceiptManagementPage());
         }
+
+        private void LogoutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

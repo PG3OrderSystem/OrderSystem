@@ -38,8 +38,6 @@ namespace OrderSystem.Views
             public int Price { get; set; }
             public int Quantity { get; set; }
             public int Subtotal { get; set; }
-            
-
         }
 
 
@@ -126,8 +124,6 @@ namespace OrderSystem.Views
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new Views.LastPage(cartItems));
-
             if (cartItems.Count == 0)
             {
                 MessageBox.Show("商品を選択してください", "注文エラー", MessageBoxButton.OK, MessageBoxImage.Warning);

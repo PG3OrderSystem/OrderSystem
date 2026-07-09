@@ -24,6 +24,7 @@
             HorizontalAlignment="Left" 
             Margin="334,16,0,0" 
             VerticalAlignment="Top" 
+            IsDefault="True"
             Height="40" 
             Width="60" 
             Click="SearchBtn_Click"/>
@@ -52,7 +53,7 @@
 
         <DataGrid 
             x:Name="ListDataGrid"  
-            Margin="50,78,50,92"
+            Margin="50,78,306,92"
             AutoGenerateColumns="False">
 
             <DataGrid.Columns>
@@ -60,7 +61,7 @@
                 <DataGridTextColumn 
                     Header="商品" 
                     Binding="{Binding ProductName}" 
-                    Width="*"/>
+                    Width="120"/>
 
                 <DataGridTextColumn 
                     Header="単価" 
@@ -83,16 +84,53 @@
         </DataGrid>
 
 
+        <DataGrid 
+            x:Name="OrderDataGrid"  
+            Margin="420,78,40,92"
+            AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn 
+                    Header="注文ID" 
+                    Binding="{Binding OrderId}" 
+                    Width="45"/>
+
+                <DataGridTextColumn 
+                    Header="日時" 
+                    Binding="{Binding DateTime}" 
+                    Width="120"/>
+
+                <DataGridTextColumn 
+                    Header="合計"   
+                    Binding="{Binding TotalAmount}" 
+                    Width="*"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+
 
         <TextBlock 
             x:Name="TotalSumTxtBlock" 
-            HorizontalAlignment="Left" 
-            Margin="499,360,0,0" 
+            HorizontalAlignment="Center" 
+            Margin="0,358,0,0" 
             TextWrapping="Wrap" 
             Text="合計: ¥0" 
             FontSize="20"
             VerticalAlignment="Top" 
             Height="30" Width="140"/>
+
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="50,21,0,0" 
+            TextWrapping="Wrap" 
+            Text="注文ID：" 
+            VerticalAlignment="Top" 
+            Height="30" Width="77"
+            FontSize="14"
+            TextAlignment="Center"/>
 
 
 

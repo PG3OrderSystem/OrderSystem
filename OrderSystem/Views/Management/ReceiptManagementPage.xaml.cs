@@ -26,6 +26,7 @@ namespace OrderSystem.Views.Management
         public ReceiptManagementPage()
         {
             InitializeComponent();
+            LoadOrders();
         }
 
 
@@ -91,15 +92,32 @@ namespace OrderSystem.Views.Management
                 return;
             }
 
-                var dlg = new PrintDialog();
-                if (dlg.ShowDialog() == true)
-                {
-                    dlg.PrintVisual(this, "Receipt");
-                }
-
-
-
+            var dlg = new PrintDialog();
+            if (dlg.ShowDialog() == true)
+            {
+                dlg.PrintVisual(this, "Receipt");
+            }
             
+            
+
         }
+
+
+
+
+
+        void LoadOrders()
+        {
+            OrderDataGrid.ItemsSource = DataAccess.GetOrdersById();
+        }
+
+
+
+
+
+
+
+
+
     }
 }

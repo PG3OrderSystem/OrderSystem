@@ -13,3 +13,18 @@ public partial class Admin
 
     public string? Position { get; set; }
 }
+
+
+/*
+ 
+ CREATE TABLE [dbo].[Admins] (
+    [AdminId]  NVARCHAR (10) NOT NULL,
+    [Password] NVARCHAR (20) NOT NULL,
+    [Name]     NVARCHAR (20) NULL,
+    [Position] NVARCHAR (10) NULL,
+    PRIMARY KEY CLUSTERED ([AdminId] ASC)
+);
+
+
+ 
+ */

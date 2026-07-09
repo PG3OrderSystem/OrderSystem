@@ -19,3 +19,21 @@ public partial class OrderDetail
 
     public virtual Products Product { get; set; } = null!;
 }
+
+
+/*
+ 
+ CREATE TABLE [dbo].[OrderDetail] (
+    [OrderDetailId] INT           IDENTITY (1, 1) NOT NULL,
+    [ProductId]     NVARCHAR (10) NOT NULL,
+    [OrderId]       INT           NOT NULL,
+    [Quantity]      INT           NOT NULL,
+    [Subtotal]      INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([OrderDetailId] ASC),
+    CONSTRAINT [FK_OrderDetail_ToOrders] FOREIGN KEY ([OrderId]) REFERENCES [dbo].[Orders] ([OrderId]),
+    CONSTRAINT [FK_OrderDetail_ToProducts] FOREIGN KEY ([ProductId]) REFERENCES [dbo].[Products] ([ProductId])
+);
+
+
+ 
+ */

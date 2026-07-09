@@ -25,6 +25,14 @@
             Margin="450,0,0,0" 
             Height="120" Width="170" 
             Click="ReceiptManagementBtn_Click"/>
+        
+        <Button 
+            x:Name="LogoutBtn" 
+            Content="ログアウト" 
+            HorizontalAlignment="Left" 
+            Margin="80,39,0,0" 
+            VerticalAlignment="Top" 
+            Height="30" Width="80" Click="LogoutBtn_Click"/>
 
 
 

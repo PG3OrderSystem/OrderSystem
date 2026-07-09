@@ -27,18 +27,7 @@ namespace OrderSystem.Views
             AdminTxtBox.Focus();
         }
 
-
-
-        private bool CheckLogin(string id, string password)
-        {
-            using (var context = new Models.OrderDBContext())
-            {
-                var admin = context.Admins
-                    .FirstOrDefault(a => a.AdminId == id && a.Password == password);
-
-                return admin != null;
-            }
-        }
+               
 
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
@@ -46,7 +35,7 @@ namespace OrderSystem.Views
             string id = AdminTxtBox.Text;
             string password = PassTxtBox.Password;
 
-            if (CheckLogin(id, password))
+            if (DataAccess.CheckLogin(id, password))
             {
                 NavigationService.Navigate(new TopManagementPage());
             }
