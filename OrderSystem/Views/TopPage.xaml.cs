@@ -43,18 +43,15 @@ namespace OrderSystem.Views
 
         public void AddToCart(Models.Products product)
         {
-            // Check if this product is already in the cart
             var existing = cartItems.FirstOrDefault(c => c.ProductId == product.ProductId);
 
             if (existing != null)
             {
-                // Already in cart → just increase quantity
                 existing.Quantity++;
                 existing.Subtotal = existing.Price * existing.Quantity;
             }
             else
             {
-                // Not in cart yet → add new row
                 cartItems.Add(new CartItem
                 {
                     ProductId = product.ProductId,
@@ -65,24 +62,11 @@ namespace OrderSystem.Views
                 });
             }
 
-            // Refresh the DataGrid to show the changes
             ListDataGrid.Items.Refresh();
 
-            // Update the total amount text
             int total = cartItems.Sum(c => c.Subtotal);
             TotalSumTxtBlock.Text = $"合計: ¥{total}";
         }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -124,68 +108,22 @@ namespace OrderSystem.Views
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
+
             if (cartItems.Count == 0)
             {
                 MessageBox.Show("商品を選択してください", "注文エラー", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            using (var context = new OrderDBContext())
-            {
-                var order = new Order
-                {
-                    DateTime = DateTime.Now,
-                    TotalAmount = cartItems.Sum(c => c.Subtotal)
-                };
-                context.Orders.Add(order);
-                context.SaveChanges();
 
-                foreach (var item in cartItems)
-                {
-                    var detail = new OrderDetail
-                    {
-                        OrderId = order.OrderId,
-                        ProductId = item.ProductId,
-                        Quantity = item.Quantity,
-                        Subtotal = item.Subtotal
-                    };
-                    context.OrderDetails.Add(detail);
-                }
-                context.SaveChanges();
+            int orderId = DataAccess.SaveOrder(cartItems.Sum(c => c.Subtotal), cartItems);
+            NavigationService.Navigate(new LastPage(cartItems, orderId));
 
-                NavigationService.Navigate(new LastPage(cartItems, order.OrderId));
-            }
         }
-
-    
-        
 
         private void ManagementBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Views.LoginPage());
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
 
 
     }

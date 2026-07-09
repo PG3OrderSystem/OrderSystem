@@ -139,9 +139,9 @@
 
         <Button 
             x:Name="ClearBtn" 
-            Content="Clear" 
+            Content="クリア" 
             HorizontalAlignment="Left" 
-            Margin="600,20,0,0" 
+            Margin="531,58,0,0" 
             VerticalAlignment="Top" 
             Width="80" Height="40" 
             Click="ClearBtn_Click" />

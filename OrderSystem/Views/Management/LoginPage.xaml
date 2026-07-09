@@ -23,6 +23,7 @@
             Margin="0,80,0,0" 
             TextWrapping="Wrap" 
             VerticalAlignment="Top" 
+            FontSize="14"
             Width="150" Height="40"/>
 
 
@@ -42,6 +43,7 @@
             HorizontalAlignment="Center" 
             Margin="0,160,0,0" 
             VerticalAlignment="Top" 
+            FontSize="14"
             Width="150" Height="40"/>
 
 
@@ -51,7 +53,7 @@
         
         <Button 
             x:Name="LoginBtn" 
-            Content="Login" 
+            Content="ログイン" 
             HorizontalAlignment="Center" 
             Margin="0,238,0,0" 
             VerticalAlignment="Top" 
@@ -61,7 +63,7 @@
 
         <Button 
             x:Name="CancelBtn" 
-            Content="Cancel" 
+            Content="キャンセル" 
             HorizontalAlignment="Center" 
             Margin="0,320,0,0" 
             VerticalAlignment="Top" 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace OrderSystem.Models;
 
-public partial class Order
+public partial class Orders
 {
     public int OrderId { get; set; }
 

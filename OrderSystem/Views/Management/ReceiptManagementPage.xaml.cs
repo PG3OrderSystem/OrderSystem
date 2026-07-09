@@ -30,52 +30,25 @@ namespace OrderSystem.Views.Management
         }
 
 
-        public class DisplayItem
-        {
-            public string ProductName { get; set; }
-            public int Price { get; set; }
-            public int Quantity { get; set; }
-            public int Subtotal { get; set; }
-        }
-
-
-
-
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
             if (!int.TryParse(ReceiptIdTxtBox.Text, out int orderId))
             {
-                MessageBox.Show("有効な注文IDを入力してください。");
+                MessageBox.Show("有効な注文IDを入力してください。", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            using (var context = new OrderDBContext())
+            var result = DataAccess.GetReceipt(orderId);
+
+            if (result == null)
             {
-                var order = context.Orders
-                    .Where(o => o.OrderId == orderId)
-                    .Select(o => new
-                    {
-                        Details = o.OrderDetails.Select(d => new DisplayItem
-                        {
-                            ProductName = d.Product.ProductName,
-                            Price = d.Product.Price,
-                            Quantity = d.Quantity,
-                            Subtotal = d.Subtotal
-                        }).ToList(),
-                        o.TotalAmount
-                    })
-                    .FirstOrDefault();
-
-                if (order == null)
-                {
-                    MessageBox.Show("指定された注文が見つかりません。");
-                    return;
-                }
-
-                ListDataGrid.ItemsSource = order.Details;
-                TotalSumTxtBlock.Text = $"合計: ¥{order.TotalAmount}";
+                MessageBox.Show("指定された注文が見つかりません。", "情報", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
             }
+
+            ListDataGrid.ItemsSource = result.Value.Details;
+            TotalSumTxtBlock.Text = $"合計: ¥{result.Value.TotalAmount}";
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
@@ -88,7 +61,7 @@ namespace OrderSystem.Views.Management
             var items = ListDataGrid.ItemsSource as System.Collections.IList;
             if (items == null || items.Count == 0)
             {
-                MessageBox.Show("表示するレシートがありません。");
+                MessageBox.Show("表示するレシートがありません。", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -97,13 +70,8 @@ namespace OrderSystem.Views.Management
             {
                 dlg.PrintVisual(this, "Receipt");
             }
-            
-            
 
         }
-
-
-
 
 
         void LoadOrders()
@@ -111,13 +79,11 @@ namespace OrderSystem.Views.Management
             OrderDataGrid.ItemsSource = DataAccess.GetOrdersById();
         }
 
-
-
-
-
-
-
-
-
+        private void ClearBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ReceiptIdTxtBox.Text = string.Empty;
+            ListDataGrid.ItemsSource = null;
+            TotalSumTxtBlock.Text = "合計: ¥0";
+        }
     }
 }

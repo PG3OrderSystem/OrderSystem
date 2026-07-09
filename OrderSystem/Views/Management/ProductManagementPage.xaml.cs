@@ -33,7 +33,7 @@ namespace OrderSystem.Views
         {
             try
             {
-                    dataGridProducts.ItemsSource = DataAccess.GetAllProducts();
+                dataGridProducts.ItemsSource = DataAccess.GetAllProducts();
             }
             catch (Exception ex)
             {
@@ -81,7 +81,7 @@ namespace OrderSystem.Views
                     Category = (CategoryComboBox.SelectedItem as ComboBoxItem)?.Content.ToString()
                 };
                 DataAccess.UpdateProduct(product);
-                MessageBox.Show("商品情報を更新しました。");
+                MessageBox.Show("商品情報を更新しました。", "情報", MessageBoxButton.OK, MessageBoxImage.Information);
                 LoadItems();
                 Clear();
             }
@@ -95,11 +95,11 @@ namespace OrderSystem.Views
         {
             try
             {
-                var result = MessageBox.Show("本当に削除しますか？", "確認", MessageBoxButton.YesNo);
+                var result = MessageBox.Show("本当に削除しますか？", "確認", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
                     DataAccess.DeleteProduct(ProductIdTxtBox.Text);
-                    MessageBox.Show("商品情報を削除しました。");
+                    MessageBox.Show("商品情報を削除しました。", "情報", MessageBoxButton.OK, MessageBoxImage.Information);
                     LoadItems();
                     Clear();
 
@@ -107,7 +107,7 @@ namespace OrderSystem.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"削除に失敗しました。\n{ex.Message}");
+                MessageBox.Show($"削除に失敗しました。\n{ex.Message}", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -128,12 +128,12 @@ namespace OrderSystem.Views
                 }
                 else
                 {
-                    MessageBox.Show("入力されたデータがありません。");
+                    MessageBox.Show("入力されたデータがありません。", "情報", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"検索に失敗しました。\n{ex.Message}");
+                MessageBox.Show($"検索に失敗しました。\n{ex.Message}", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

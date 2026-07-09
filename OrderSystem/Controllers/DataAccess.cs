@@ -1,5 +1,6 @@
 ﻿using OrderSystem.Models;
 using OrderSystem.Models;
+using OrderSystem.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,17 @@ using System.Windows;
 
 namespace OrderSystem
 {
+    public class DisplayItem
+    {
+        public string ProductName { get; set; }
+        public int Price { get; set; }
+        public int Quantity { get; set; }
+        public int Subtotal { get; set; }
+    }
     public class DataAccess
     {
 
-
-        public static List<Order> GetOrdersById()
+        public static List<Orders> GetOrdersById()
         {
             using (var context = new OrderDBContext())
             {
@@ -118,6 +125,60 @@ namespace OrderSystem
             }
         }
 
+        public static (List<DisplayItem> Details, int TotalAmount)? GetReceipt(int orderId)
+        {
+            using (var context = new OrderDBContext())
+            {
+                var result = context.Orders
+                    .Where(o => o.OrderId == orderId)
+                    .Select(o => new
+                    {
+                        Details = o.OrderDetails.Select(d => new DisplayItem
+                        {
+                            ProductName = d.Product.ProductName,
+                            Price = d.Product.Price,
+                            Quantity = d.Quantity,
+                            Subtotal = d.Subtotal
+                        }).ToList(),
+                        o.TotalAmount
+                    })
+                    .FirstOrDefault();
+
+                if (result == null) return null;
+
+                return (result.Details, result.TotalAmount);
+            }
+        }
+
+
+        public static int SaveOrder(int totalAmount, List<TopPage.CartItem> items)
+        {
+            using (var context = new OrderDBContext())
+            {
+                var order = new Orders
+                {
+                    DateTime = DateTime.Now,
+                    TotalAmount = totalAmount
+                };
+                context.Orders.Add(order);
+                context.SaveChanges();
+
+                foreach (var item in items)
+                {
+                    var detail = new OrderDetail
+                    {
+                        OrderId = order.OrderId,
+                        ProductId = item.ProductId,
+                        Quantity = item.Quantity,
+                        Subtotal = item.Subtotal
+                    };
+                    context.OrderDetails.Add(detail);
+                }
+                context.SaveChanges();
+
+                return order.OrderId;
+            }
+        }
 
 
 

@@ -39,6 +39,15 @@
             Width="60" 
             Click="PrntBtn_Click" />
 
+        <Button 
+            x:Name="ClearBtn"
+            Content="クリア" 
+            HorizontalAlignment="Left" 
+            Margin="504,16,0,0" 
+            VerticalAlignment="Top" 
+            Height="40" 
+            Width="60" Click="ClearBtn_Click"/>
+
 
 
         <Button 

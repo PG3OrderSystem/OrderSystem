@@ -17,7 +17,7 @@ public partial class OrderDBContext : DbContext
 
     public virtual DbSet<Admin> Admins { get; set; }
 
-    public virtual DbSet<Order> Orders { get; set; }
+    public virtual DbSet<Orders> Orders { get; set; }
 
     public virtual DbSet<OrderDetail> OrderDetails { get; set; }
 
@@ -41,7 +41,7 @@ public partial class OrderDBContext : DbContext
             entity.Property(e => e.Position).HasMaxLength(10);
         });
 
-        modelBuilder.Entity<Order>(entity =>
+        modelBuilder.Entity<Orders>(entity =>
         {
             entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BCFF5C7F282");
 

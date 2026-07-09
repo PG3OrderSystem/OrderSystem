@@ -41,7 +41,7 @@ namespace OrderSystem.Views
             }
             else
             {
-                MessageBox.Show("Id・Passwordが違います。");
+                MessageBox.Show("Id・Passwordが違います。", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
