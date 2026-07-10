@@ -30,7 +30,6 @@ namespace OrderSystem.Views
 
         private List<CartItem> cartItems = new List<CartItem>();
 
-
         public class CartItem
         {
             public string ProductId { get; set; }
@@ -39,6 +38,7 @@ namespace OrderSystem.Views
             public int Quantity { get; set; }
             public int Subtotal { get; set; }
         }
+
 
 
         public void AddToCart(Models.Products product)
