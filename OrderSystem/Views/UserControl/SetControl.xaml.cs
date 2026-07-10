@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace OrderSystem.Views
 {
@@ -21,15 +13,13 @@ namespace OrderSystem.Views
     public partial class SetControl : UserControl
     {
         private TopPage _parentPage;
+
         public SetControl(TopPage parentPage)
         {
             InitializeComponent();
             _parentPage = parentPage;
             LoadProducts("Set");
         }
-
-
-
 
         private void LoadProducts(string category)
         {
@@ -39,15 +29,13 @@ namespace OrderSystem.Views
             {
                 var btn = new Button
                 {
-                    // Display name + price on the button
                     Content = $"{product.ProductName}\n¥{product.Price}",
-                    Width = 120,
+                    Width = 110,
                     Height = 70,
                     Margin = new Thickness(10),
-                    Tag = product
+                    Tag = product,
+                    Background = (Brush)new BrushConverter().ConvertFrom("#FFE67E22")
                 };
-
-                //ProductPanel.Children.Add(btn);
 
                 btn.Click += (s, e) =>
                 {
@@ -58,8 +46,5 @@ namespace OrderSystem.Views
                 ProductPanel.Children.Add(btn);
             }
         }
-
-
-
     }
 }

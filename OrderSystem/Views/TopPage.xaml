@@ -5,149 +5,94 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OrderSystem.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="700"
-      Title="TopPage">
+      d:DesignHeight="500" d:DesignWidth="700"
+      Title="TopPage"
+      Background="#FFF0F4F8">
 
     <Grid>
+        <Border Background="#FF2C3E50" Height="50" VerticalAlignment="Top">
+            <TextBlock Text="OIC食堂" 
+                       Foreground="White"
+                       FontSize="22" 
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+        </Border>
 
-        <TextBlock 
-            HorizontalAlignment="Center" 
-            Margin="0,21,0,0" 
-            TextWrapping="Wrap" 
-            Text="OIC食堂" 
-            VerticalAlignment="Top" 
-            Height="29" Width="100" 
-            TextAlignment="Center" 
-            FontSize="20"/>
+        <Button x:Name="SetBtn" Content="セット" 
+                HorizontalAlignment="Left" Margin="20,79,0,0" 
+                VerticalAlignment="Top" Height="50" Width="70"
+                Background="#FFE67E22" Click="SetBtn_Click"/>
 
-        <Button 
-            x:Name="SetBtn" 
-            Content="セット" 
-            HorizontalAlignment="Left" 
-            Margin="20,79,0,0" 
-            VerticalAlignment="Top" 
-            Height="50" Width="60" 
-            Click="SetBtn_Click"/>
+        <Button x:Name="SingleBtn" Content="単品" 
+                HorizontalAlignment="Left" Margin="20,159,0,0" 
+                VerticalAlignment="Top" Height="50" Width="70"
+                Background="#FF27AE60" Click="SingleBtn_Click"/>
 
-        <Button 
-            x:Name="SingleBtn" 
-            Content="単品" 
-            HorizontalAlignment="Left" 
-            Margin="20,159,0,0" 
-            VerticalAlignment="Top" 
-            Height="50" Width="60" 
-            Click="SingleBtn_Click"/>
+        <Button x:Name="DrinkBtn" Content="ドリンク" 
+                HorizontalAlignment="Left" Margin="20,239,0,0" 
+                VerticalAlignment="Top" Height="50" Width="70"
+                Background="#FF2980B9" Click="DrinkBtn_Click"/>
 
-        <Button 
-            x:Name="DrinkBtn" 
-            Content="ドリンク" 
-            HorizontalAlignment="Left" 
-            Margin="20,239,0,0" 
-            VerticalAlignment="Top" 
-            Height="50" Width="60" 
-            Click="DrinkBtn_Click"/>
+        <Button x:Name="SideBtn" Content="サイド" 
+                HorizontalAlignment="Left" Margin="20,319,0,0" 
+                VerticalAlignment="Top" Height="50" Width="70"
+                Background="#FF8E44AD" Click="SideBtn_Click"/>
 
-        <Button 
-            x:Name="SideBtn" 
-            Content="サイド" 
-            HorizontalAlignment="Left" 
-            Margin="20,319,0,0" 
-            VerticalAlignment="Top" 
-            Height="50" 
-            Width="60" 
-            Click="SideBtn_Click"/>
-
-        <DataGrid 
-            x:Name="ListDataGrid"  
-            Margin="400,70,30,120"
-            AutoGenerateColumns="False">
-
+        <DataGrid x:Name="ListDataGrid"  
+                  Margin="400,70,15,120"
+                  AutoGenerateColumns="False"
+                  Background="White" RowHeight="30">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#FF2C3E50"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Height" Value="32"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
-
-                <DataGridTextColumn 
-                Header="商品" 
-                Binding="{Binding ProductName}" 
-                Width="110"/>
-
-                <DataGridTextColumn 
-                Header="単価" 
-                Binding="{Binding Price}" 
-                Width="50"/>
-
-                <DataGridTextColumn 
-                Header="個数"   
-                Binding="{Binding Quantity}" 
-                Width="35"/>
-                <DataGridTextColumn 
-                Header="小計"   
-                Binding="{Binding Subtotal}" 
-                Width="*"/>
-
-
-
-
+                <DataGridTextColumn Header="商品" 
+                                    Binding="{Binding ProductName}" Width="*"/>
+                <DataGridTextColumn Header="単価" 
+                                    Binding="{Binding Price}" Width="60"/>
+                <DataGridTextColumn Header="個数"   
+                                    Binding="{Binding Quantity}" Width="50"/>
+                <DataGridTextColumn Header="小計"   
+                                    Binding="{Binding Subtotal}" Width="70"/>
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button 
-            x:Name="CallStaffBtn"
-            Content="店員呼出し" 
-            HorizontalAlignment="Left" 
-            Margin="520,20,0,0" 
-            VerticalAlignment="Top" 
-            Height="30" Width="70" 
-            Click="CallStaffBtn_Click"/>
+        <Button x:Name="CallStaffBtn" Content="店員呼出し" 
+                HorizontalAlignment="Left" Margin="520,15,0,0" 
+                VerticalAlignment="Top" Height="30" Width="80"
+                Background="#FFE74C3C" Click="CallStaffBtn_Click"/>
 
-        <Button 
-            x:Name="ManagementBtn"
-            Content="管理" 
-            HorizontalAlignment="Left" 
-            Margin="600,20,0,0" 
-            VerticalAlignment="Top" 
-            Height="30" Width="70" 
-            Click="ManagementBtn_Click" />
+        <Button x:Name="ManagementBtn" Content="管理" 
+                HorizontalAlignment="Left" Margin="610,15,0,0" 
+                VerticalAlignment="Top" Height="30" Width="70"
+                Background="#FF95A5A6" Click="ManagementBtn_Click" />
 
+        <Border Background="White" CornerRadius="6"
+                HorizontalAlignment="Left" Margin="540,350,0,0" 
+                VerticalAlignment="Top" Width="130" Height="28">
+            <TextBlock x:Name="TotalSumTxtBlock" Text="合計: ¥0" 
+                       FontSize="18" FontWeight="Bold"
+                       Foreground="#FF2C3E50"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
 
-        <TextBlock 
-            x:Name="TotalSumTxtBlock" 
-            HorizontalAlignment="Left" 
-            Margin="538,318,0,0" 
-            TextWrapping="Wrap" 
-            Text="合計: ¥0" 
-            VerticalAlignment="Top" 
-            Width="120" Height="25"/>
+        <Button x:Name="ClearBtn" Content="全削除" 
+                HorizontalAlignment="Left" Margin="451,400,0,0" 
+                VerticalAlignment="Top" Height="34" Width="70"
+                Background="#FFE74C3C" Click="ClearBtn_Click"/>
 
+        <Button x:Name="OrderBtn" Content="注文確定" 
+                HorizontalAlignment="Left" Margin="451,346,0,0" 
+                VerticalAlignment="Top" Height="34" Width="70"
+                Background="#FF27AE60" Click="OrderBtn_Click"/>
 
-        <Button 
-            x:Name="ClearBtn" 
-            Content="全削除" 
-            HorizontalAlignment="Left" 
-            Margin="446,350,0,0" 
-            VerticalAlignment="Top"
-            Height="30" Width="60" 
-            Click="ClearBtn_Click"/>
-
-        <Button 
-            x:Name="OrderBtn" 
-            Content="注文確定" 
-            HorizontalAlignment="Left" 
-            Margin="615,350,0,0" 
-            VerticalAlignment="Top"
-            Height="30" Width="60" 
-            Click="OrderBtn_Click"/>
-
-
-
-        <ContentControl 
-            x:Name="MiddleContent"
-            Margin="90,74,310,66" 
-            Width="300"/>
-
-
-
-
-
-
-
+        <ContentControl x:Name="MiddleContent"
+                        Margin="105,74,355,66" Width="290"/>
     </Grid>
 </Page>

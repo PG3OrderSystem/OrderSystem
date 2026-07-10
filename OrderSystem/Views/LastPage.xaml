@@ -5,72 +5,69 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OrderSystem.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="700"
-      Title="LastPage">
+      d:DesignHeight="500" d:DesignWidth="700"
+      Title="LastPage"
+      Background="#FFF0F4F8">
 
     <Grid>
+        <Border Background="#FF2C3E50" Height="50" VerticalAlignment="Top">
+            <TextBlock Text="注文確認" 
+                       Foreground="White"
+                       FontSize="22" FontWeight="Bold"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
 
+        <TextBlock x:Name="OrderIdTxtBlock" 
+                   HorizontalAlignment="Left" 
+                   Margin="50,65,0,0" 
+                   Text="注文ID：" 
+                   FontSize="16" FontWeight="Bold"
+                   Foreground="#FF2C3E50"
+                   VerticalAlignment="Top"/>
 
-        <DataGrid 
-            x:Name="ListDataGrid"  
-            Margin="50,78,50,92"
-            AutoGenerateColumns="False">
-
+        <DataGrid x:Name="ListDataGrid"  
+                  Margin="50,100,50,100"
+                  AutoGenerateColumns="False"
+                  Background="White" RowHeight="30">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#FF2C3E50"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Height" Value="32"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
-
-                <DataGridTextColumn 
-                    Header="商品" 
-                    Binding="{Binding ProductName}" 
-                    Width="*"/>
-
-                <DataGridTextColumn 
-                    Header="単価" 
-                    Binding="{Binding Price}" 
-                    Width="*"/>
-
-                <DataGridTextColumn 
-                    Header="個数"   
-                    Binding="{Binding Quantity}" 
-                    Width="*"/>
-
-                <DataGridTextColumn 
-                    Header="合計"   
-                    Binding="{Binding Subtotal}" 
-                    Width="*"/>
-
-
+                <DataGridTextColumn Header="商品" 
+                                    Binding="{Binding ProductName}" Width="*"/>
+                <DataGridTextColumn Header="単価" 
+                                    Binding="{Binding Price}" Width="*"/>
+                <DataGridTextColumn Header="個数"   
+                                    Binding="{Binding Quantity}" Width="*"/>
+                <DataGridTextColumn Header="合計"   
+                                    Binding="{Binding Subtotal}" Width="*"/>
             </DataGrid.Columns>
-
         </DataGrid>
 
+        <TextBlock Text="ご注文ありがとうございました。" 
+                   FontSize="18" FontWeight="Bold"
+                   Foreground="#FF27AE60"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,55"
+                   VerticalAlignment="Bottom"/>
 
-        <Button 
-            x:Name="BackBtn" 
-            Content="🔙" 
-            HorizontalAlignment="Left" 
-            Margin="20,20,0,0" 
-            VerticalAlignment="Top" 
-            Width="30" Height="20" Click="BackBtn_Click"/>
+        <Border Background="White" CornerRadius="8"
+                HorizontalAlignment="Right" Margin="0,0,50,10"
+                VerticalAlignment="Bottom" Width="160" Height="40">
+            <TextBlock x:Name="TotalSumTxtBlock" Text="合計: ¥0" 
+                       FontSize="20" FontWeight="Bold"
+                       Foreground="#FF2C3E50"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
 
-
-        <TextBlock 
-            x:Name="TotalSumTxtBlock" 
-            HorizontalAlignment="Left" 
-            Margin="499,360,0,0" 
-            TextWrapping="Wrap" 
-            Text="合計: ¥0" 
-            FontSize="20"
-            VerticalAlignment="Top" 
-            Height="30" Width="140"/>
-        
-        
-        <TextBlock 
-            x:Name="OrderIdTxtBlock" 
-            HorizontalAlignment="Left" 
-            Margin="159,20,0,0" 
-            TextWrapping="Wrap" 
-            Text="注文ID：" 
-            VerticalAlignment="Top"/>
-
+        <Button x:Name="BackBtn" Content="← トップに戻る" 
+                HorizontalAlignment="Left" Margin="20,15,0,0" 
+                VerticalAlignment="Top" Width="110" Height="30"
+                Background="#FF95A5A6" Click="BackBtn_Click"/>
     </Grid>
 </Page>

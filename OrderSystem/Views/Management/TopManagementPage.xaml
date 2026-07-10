@@ -5,45 +5,46 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OrderSystem.Views.Management"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="700"
-      Title="TopManagementPage">
+      d:DesignHeight="500" d:DesignWidth="700"
+      Title="TopManagementPage"
+      Background="#FFF0F4F8">
 
     <Grid>
+        <Border Background="#FF2C3E50" Height="50" VerticalAlignment="Top">
+            <TextBlock Text="管理画面" 
+                       Foreground="White" FontSize="22" FontWeight="Bold"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
 
-        <Button 
-            x:Name="ProductManagementBtn" 
-            Content="商品管理" 
-            HorizontalAlignment="Left" 
-            Margin="80,0,0,0" 
-            Height="120" Width="170" Click="ProductManagementBtn_Click"/>
+        <Button x:Name="LogoutBtn" Content="ログアウト" 
+                HorizontalAlignment="Left" Margin="20,15,0,0" 
+                VerticalAlignment="Top" Height="32" Width="90"
+                Background="#FFE74C3C" Click="LogoutBtn_Click"/>
 
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <Border Background="White" CornerRadius="12" Width="220" Height="170" Margin="15">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="商品管理" FontSize="18" FontWeight="Bold" 
+                               Foreground="#FF2C3E50" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                    <TextBlock Text="メニュー商品の追加・編集・削除" FontSize="12" 
+                               Foreground="#FF7F8C8D" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+                    <Button x:Name="ProductManagementBtn" Content="開く" 
+                            Height="36" Width="100" Background="#FF27AE60"
+                            Click="ProductManagementBtn_Click"/>
+                </StackPanel>
+            </Border>
 
-        <Button 
-            x:Name="ReceiptManagementBtn" 
-            Content="レシート管理" 
-            HorizontalAlignment="Left" 
-            Margin="450,0,0,0" 
-            Height="120" Width="170" 
-            Click="ReceiptManagementBtn_Click"/>
-        
-        <Button 
-            x:Name="LogoutBtn" 
-            Content="ログアウト" 
-            HorizontalAlignment="Left" 
-            Margin="80,39,0,0" 
-            VerticalAlignment="Top" 
-            Height="30" Width="80" Click="LogoutBtn_Click"/>
-
-
-
-
-
-
-
-
-
-
-
-
+            <Border Background="White" CornerRadius="12" Width="220" Height="170" Margin="15">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="レシート管理" FontSize="18" FontWeight="Bold" 
+                               Foreground="#FF2C3E50" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                    <TextBlock Text="注文履歴の検索・印刷" FontSize="12" 
+                               Foreground="#FF7F8C8D" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+                    <Button x:Name="ReceiptManagementBtn" Content="開く" 
+                            Height="36" Width="100" Background="#FF2980B9"
+                            Click="ReceiptManagementBtn_Click"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
     </Grid>
 </Page>

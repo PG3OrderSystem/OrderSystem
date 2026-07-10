@@ -5,147 +5,99 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OrderSystem.Views.Management"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="700"
-      Title="ReceiptManagementPage">
+      d:DesignHeight="500" d:DesignWidth="700"
+      Title="ReceiptManagementPage"
+      Background="#FFF0F4F8">
 
-    <Grid x:Name="PrintBtn">
-        <TextBox 
-            x:Name="ReceiptIdTxtBox" 
-            HorizontalAlignment="Left" 
-            Margin="147,16,0,0" 
-            TextWrapping="Wrap" 
-            VerticalAlignment="Top" 
-            Width="140" Height="40"/>
+    <Grid>
+        <Border Background="#FF2C3E50" Height="50" VerticalAlignment="Top">
+            <TextBlock Text="レシート管理" 
+                       Foreground="White" FontSize="22" FontWeight="Bold"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
 
+        <TextBlock Text="注文ID：" FontSize="14" 
+                   HorizontalAlignment="Left" Margin="50,70,0,0"
+                   Foreground="#FF2C3E50" VerticalAlignment="Top"/>
 
-        <Button 
-            x:Name="SearchBtn"
-            Content="検索" 
-            HorizontalAlignment="Left" 
-            Margin="334,16,0,0" 
-            VerticalAlignment="Top" 
-            IsDefault="True"
-            Height="40" 
-            Width="60" 
-            Click="SearchBtn_Click"/>
+        <TextBox x:Name="ReceiptIdTxtBox" 
+                 HorizontalAlignment="Left" Margin="147,68,0,0" 
+                 VerticalAlignment="Top" Width="140" Height="35"/>
 
-        <Button 
-            x:Name="PrntBtn"
-            Content="印刷" 
-            HorizontalAlignment="Left" 
-            Margin="420,16,0,0" 
-            VerticalAlignment="Top" 
-            Height="40" 
-            Width="60" 
-            Click="PrntBtn_Click" />
+        <Button x:Name="SearchBtn" Content="検索" 
+                HorizontalAlignment="Left" Margin="300,67,0,0" 
+                VerticalAlignment="Top" Height="35" Width="60"
+                Background="#FF2980B9" IsDefault="True"
+                Click="SearchBtn_Click"/>
 
-        <Button 
-            x:Name="ClearBtn"
-            Content="クリア" 
-            HorizontalAlignment="Left" 
-            Margin="504,16,0,0" 
-            VerticalAlignment="Top" 
-            Height="40" 
-            Width="60" Click="ClearBtn_Click"/>
+        <Button x:Name="PrntBtn" Content="印刷" 
+                HorizontalAlignment="Left" Margin="370,68,0,0" 
+                VerticalAlignment="Top" Height="35" Width="60"
+                Background="#FF27AE60" Click="PrntBtn_Click" />
 
+        <Button x:Name="ClearBtn" Content="クリア" 
+                HorizontalAlignment="Left" Margin="440,68,0,0" 
+                VerticalAlignment="Top" Height="35" Width="60"
+                Background="#FF95A5A6" Click="ClearBtn_Click"/>
 
+        <Button x:Name="BackBtn" Content="← 戻る" 
+                HorizontalAlignment="Left" Margin="600,10,0,0" 
+                VerticalAlignment="Top" Height="35" Width="70"
+                Background="#FF95A5A6" Click="BackBtn_Click"/>
 
-        <Button 
-            x:Name="BackBtn"
-            Content="戻る" 
-            HorizontalAlignment="Left" 
-            Margin="600,16,0,0" 
-            VerticalAlignment="Top" 
-            Height="40" 
-            Width="60" Click="BackBtn_Click"/>
-
-
-        <DataGrid 
-            x:Name="ListDataGrid"  
-            Margin="50,78,306,92"
-            AutoGenerateColumns="False">
-
+        <DataGrid x:Name="ListDataGrid"  
+                  Margin="15,110,390,50"
+                  AutoGenerateColumns="False"
+                  Background="White" RowHeight="28">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#FF2C3E50"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Height" Value="30"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
-
-                <DataGridTextColumn 
-                    Header="商品" 
-                    Binding="{Binding ProductName}" 
-                    Width="120"/>
-
-                <DataGridTextColumn 
-                    Header="単価" 
-                    Binding="{Binding Price}" 
-                    Width="*"/>
-
-                <DataGridTextColumn 
-                    Header="個数"   
-                    Binding="{Binding Quantity}" 
-                    Width="*"/>
-
-                <DataGridTextColumn 
-                    Header="合計"   
-                    Binding="{Binding Subtotal}" 
-                    Width="*"/>
-
-
+                <DataGridTextColumn Header="商品" 
+                                    Binding="{Binding ProductName}" Width="*"/>
+                <DataGridTextColumn Header="単価" 
+                                    Binding="{Binding Price}" Width="*"/>
+                <DataGridTextColumn Header="個数"   
+                                    Binding="{Binding Quantity}" Width="*"/>
+                <DataGridTextColumn Header="合計"   
+                                    Binding="{Binding Subtotal}" Width="*"/>
             </DataGrid.Columns>
-
         </DataGrid>
 
-
-        <DataGrid 
-            x:Name="OrderDataGrid"  
-            Margin="420,78,40,92"
-            AutoGenerateColumns="False">
-
+        <DataGrid x:Name="OrderDataGrid"  
+                  Margin="390,110,15,50"
+                  AutoGenerateColumns="False"
+                  Background="White" RowHeight="28">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#FF2C3E50"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Height" Value="30"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
-
-                <DataGridTextColumn 
-                    Header="注文ID" 
-                    Binding="{Binding OrderId}" 
-                    Width="45"/>
-
-                <DataGridTextColumn 
-                    Header="日時" 
-                    Binding="{Binding DateTime}" 
-                    Width="120"/>
-
-                <DataGridTextColumn 
-                    Header="合計"   
-                    Binding="{Binding TotalAmount}" 
-                    Width="*"/>
-
+                <DataGridTextColumn Header="注文ID" 
+                                    Binding="{Binding OrderId}" Width="45"/>
+                <DataGridTextColumn Header="日時" 
+                                    Binding="{Binding DateTime}" Width="120"/>
+                <DataGridTextColumn Header="合計"   
+                                    Binding="{Binding TotalAmount}" Width="*"/>
             </DataGrid.Columns>
-
         </DataGrid>
 
-
-
-        <TextBlock 
-            x:Name="TotalSumTxtBlock" 
-            HorizontalAlignment="Center" 
-            Margin="0,358,0,0" 
-            TextWrapping="Wrap" 
-            Text="合計: ¥0" 
-            FontSize="20"
-            VerticalAlignment="Top" 
-            Height="30" Width="140"/>
-
-        <TextBlock 
-            HorizontalAlignment="Left" 
-            Margin="50,21,0,0" 
-            TextWrapping="Wrap" 
-            Text="注文ID：" 
-            VerticalAlignment="Top" 
-            Height="30" Width="77"
-            FontSize="14"
-            TextAlignment="Center"/>
-
-
-
-
-
-
-
+        <Border Background="White" CornerRadius="6"
+                HorizontalAlignment="Left" Margin="160,0,0,10"
+                VerticalAlignment="Bottom" Width="140" Height="32">
+            <TextBlock x:Name="TotalSumTxtBlock" Text="合計: ¥0" 
+                       FontSize="16" FontWeight="Bold"
+                       Foreground="#FF2C3E50"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
     </Grid>
 </Page>

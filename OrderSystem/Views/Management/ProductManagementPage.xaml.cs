@@ -1,18 +1,8 @@
 ﻿using OrderSystem.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace OrderSystem.Views
 {
@@ -27,8 +17,6 @@ namespace OrderSystem.Views
             LoadItems();
         }
 
-
-
         public void LoadItems()
         {
             try
@@ -41,10 +29,6 @@ namespace OrderSystem.Views
                 MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        
-
-
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -61,7 +45,6 @@ namespace OrderSystem.Views
                 MessageBox.Show("情報を追加しました。");
                 LoadItems();
                 Clear();
-                
             }
             catch (Exception ex)
             {
@@ -102,7 +85,6 @@ namespace OrderSystem.Views
                     MessageBox.Show("商品情報を削除しました。", "情報", MessageBoxButton.OK, MessageBoxImage.Information);
                     LoadItems();
                     Clear();
-
                 }
             }
             catch (Exception ex)

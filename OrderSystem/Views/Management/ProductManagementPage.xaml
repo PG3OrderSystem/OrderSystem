@@ -5,147 +5,88 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OrderSystem.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="700"
-      Title="ProductManagementPage">
+      d:DesignHeight="500" d:DesignWidth="700"
+      Title="ProductManagementPage"
+      Background="#FFF0F4F8">
 
     <Grid>
+        <Border Background="#FF2C3E50" Height="50" VerticalAlignment="Top">
+            <TextBlock Text="商品管理" 
+                       Foreground="White" FontSize="22" FontWeight="Bold"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
 
-        <TextBlock 
-            HorizontalAlignment="Left" 
-            Margin="295,5,0,0" 
-            TextWrapping="Wrap" 
-            Text="商品管理" 
-            VerticalAlignment="Top" 
-            Height="18" Width="80" 
-            TextAlignment="Center"/>
+        <Button x:Name="BackBtn" Content="← 戻る" 
+                HorizontalAlignment="Left" Margin="20,15,0,0" 
+                VerticalAlignment="Top" Height="32" Width="80"
+                Background="#FF95A5A6" Click="BackBtn_Click" />
 
+        <StackPanel Margin="50,70,50,0" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <StackPanel Margin="0,0,10,0">
+                    <TextBlock Text="商品ID" FontSize="12" Foreground="#FF7F8C8D" Margin="0,0,0,3"/>
+                    <TextBox x:Name="ProductIdTxtBox" Width="112" Height="30"/>
+                </StackPanel>
+                <StackPanel Margin="0,0,10,0">
+                    <TextBlock Text="商品名" FontSize="12" Foreground="#FF7F8C8D" Margin="0,0,0,3"/>
+                    <TextBox x:Name="ProductNameTxtBox" Width="192" Height="30"/>
+                </StackPanel>
+                <StackPanel Margin="0,0,10,0">
+                    <TextBlock Text="単価" FontSize="12" Foreground="#FF7F8C8D" Margin="0,0,0,3"/>
+                    <TextBox x:Name="ProductPriceTxtBox" Width="90" Height="30"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="カテゴリー" FontSize="12" Foreground="#FF7F8C8D" Margin="0,0,0,3"/>
+                    <ComboBox x:Name="CategoryComboBox" Width="100" Height="30">
+                        <ComboBoxItem Content="Set"/>
+                        <ComboBoxItem Content="Single"/>
+                        <ComboBoxItem Content="Drinks"/>
+                        <ComboBoxItem Content="Side"/>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
 
-        <Button 
-            x:Name="AddBtn" 
-            Content="追加" 
-            HorizontalAlignment="Left" 
-            Margin="180,58,0,0" 
-            VerticalAlignment="Top" 
-            Width="80" Height="40" 
-            Click="AddBtn_Click"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,10">
+                <Button x:Name="AddBtn" Content="追加" 
+                        Width="65" Height="32"
+                        Background="#FF27AE60" Click="AddBtn_Click" Margin="0,0,10,0"/>
+                <Button x:Name="UpdateBtn" Content="更新" 
+                        Width="65" Height="32"
+                        Background="#FF4A90D9" Click="UpdateBtn_Click" Margin="0,0,10,0"/>
+                <Button x:Name="DeleteBtn" Content="削除" 
+                        Width="65" Height="32"
+                        Background="#FFE74C3C" Click="DeleteBtn_Click" Margin="0,0,10,0"/>
+                <Button x:Name="SearchBtn" Content="検索" 
+                        Width="65" Height="32"
+                        Background="#FF8E44AD" Click="SearchBtn_Click" Margin="0,0,10,0"/>
+                <Button x:Name="ClearBtn" Content="クリア" 
+                        Width="65" Height="32"
+                        Background="#FF95A5A6" Click="ClearBtn_Click"/>
+            </StackPanel>
+        </StackPanel>
 
-        <Button 
-            x:Name="UpdateBtn" 
-            Content="更新" 
-            HorizontalAlignment="Left" 
-            Margin="265,58,0,0" 
-            VerticalAlignment="Top" 
-            Width="80" Height="40" 
-            Click="UpdateBtn_Click"/>
-
-        <Button 
-            x:Name="DeleteBtn" 
-            Content="削除" 
-            HorizontalAlignment="Left" 
-            Margin="350,58,0,0" 
-            VerticalAlignment="Top" 
-            Width="80" Height="40" 
-            Click="DeleteBtn_Click"/>
-
-        <Button 
-            x:Name="SearchBtn" 
-            Content="検索" 
-            HorizontalAlignment="Left" 
-            Margin="437,58,0,0" 
-            VerticalAlignment="Top" 
-            Width="80" Height="40" 
-            Click="SearchBtn_Click"/>
-
-
-        <TextBox 
-            x:Name="ProductIdTxtBox" 
-            HorizontalAlignment="Left" 
-            Margin="55,115,0,0" 
-            TextWrapping="Wrap" 
-            VerticalAlignment="Top" 
-            Width="112" Height="30"/>
-
-        <TextBox 
-            x:Name="ProductNameTxtBox" 
-            HorizontalAlignment="Left" 
-            Margin="175,115,0,0" 
-            TextWrapping="Wrap" 
-            VerticalAlignment="Top" 
-            Width="192" Height="30"/>
-
-
-        <TextBox 
-            x:Name="ProductPriceTxtBox" 
-            HorizontalAlignment="Left" 
-            Margin="376,115,0,0" 
-            TextWrapping="Wrap" 
-            VerticalAlignment="Top" 
-            Width="90" Height="30"/>
-
-        <ComboBox 
-            x:Name="CategoryComboBox"
-            HorizontalAlignment="Left" 
-            Margin="480,115,0,0" 
-            VerticalAlignment="Top" 
-            Width="102" Height="30">
-            <ComboBoxItem Content="Set"/>
-            <ComboBoxItem Content="Single"/>
-            <ComboBoxItem Content="Drinks"/>
-            <ComboBoxItem Content="Side"/>
-        </ComboBox>
-
-
-
-        <DataGrid 
-            x:Name="dataGridProducts"  
-            Margin="50,150,50,20"
-            AutoGenerateColumns="False">
-
+        <DataGrid x:Name="dataGridProducts"  
+                  Margin="50,190,50,32"
+                  AutoGenerateColumns="False"
+                  Background="White" RowHeight="28">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#FF2C3E50"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Height" Value="32"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
-
-                <DataGridTextColumn 
-                    Header="商品ID" 
-                    Binding="{Binding ProductId}" 
-                    Width="120"/>
-
-                <DataGridTextColumn 
-                    Header="商品" 
-                    Binding="{Binding ProductName}" 
-                    Width="200"/>
-
-                <DataGridTextColumn 
-                    Header="単価" 
-                    Binding="{Binding Price}" 
-                    Width="100"/>
-
-                <DataGridTextColumn 
-                    Header="カテゴリー"   
-                    Binding="{Binding Category}" 
-                    Width="*"/>
-
+                <DataGridTextColumn Header="商品ID" 
+                                    Binding="{Binding ProductId}" Width="100"/>
+                <DataGridTextColumn Header="商品名" 
+                                    Binding="{Binding ProductName}" Width="*"/>
+                <DataGridTextColumn Header="単価" 
+                                    Binding="{Binding Price}" Width="80"/>
+                <DataGridTextColumn Header="カテゴリー"   
+                                    Binding="{Binding Category}" Width="80"/>
             </DataGrid.Columns>
-
         </DataGrid>
-
-
-        <Button 
-            x:Name="BackBtn" 
-            Content="戻る" 
-            HorizontalAlignment="Left" 
-            Margin="20,20,0,0" 
-            VerticalAlignment="Top" 
-            Width="80" Height="40" 
-            Click="BackBtn_Click" />
-
-        <Button 
-            x:Name="ClearBtn" 
-            Content="クリア" 
-            HorizontalAlignment="Left" 
-            Margin="531,58,0,0" 
-            VerticalAlignment="Top" 
-            Width="80" Height="40" 
-            Click="ClearBtn_Click" />
-
-
     </Grid>
 </Page>

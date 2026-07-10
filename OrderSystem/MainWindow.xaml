@@ -6,14 +6,10 @@
         xmlns:local="clr-namespace:OrderSystem"
         mc:Ignorable="d"
         Title="OIC Order System" 
-        Height="450" Width="700"
+        Height="500" Width="700"
         WindowStartupLocation="CenterScreen">
     <Grid>
-
-        <Frame 
-            x:Name="PageFrame"
-            
-            NavigationUIVisibility="Hidden"/>
-
+        <Frame x:Name="PageFrame"
+               NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

@@ -2,17 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace OrderSystem.Views
 {
@@ -21,13 +12,6 @@ namespace OrderSystem.Views
     /// </summary>
     public partial class TopPage : Page
     {
-        public TopPage()
-        {
-            InitializeComponent();
-            ListDataGrid.ItemsSource = cartItems;
-        }
-
-
         private List<CartItem> cartItems = new List<CartItem>();
 
         public class CartItem
@@ -39,7 +23,11 @@ namespace OrderSystem.Views
             public int Subtotal { get; set; }
         }
 
-
+        public TopPage()
+        {
+            InitializeComponent();
+            ListDataGrid.ItemsSource = cartItems;
+        }
 
         public void AddToCart(Models.Products product)
         {
@@ -68,8 +56,6 @@ namespace OrderSystem.Views
             TotalSumTxtBlock.Text = $"合計: ¥{total}";
         }
 
-
-
         private void CallStaffBtn_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("スタッフを呼びました。\n少々お待ちください。", "呼び出し完了", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -85,8 +71,6 @@ namespace OrderSystem.Views
             MiddleContent.Content = new SingleControl(this);
         }
 
-
-
         private void DrinkBtn_Click(object sender, RoutedEventArgs e)
         {
             MiddleContent.Content = new DrinksControl(this);
@@ -100,15 +84,12 @@ namespace OrderSystem.Views
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
             cartItems.Clear();
-
             ListDataGrid.Items.Refresh();
-
             TotalSumTxtBlock.Text = "合計: ¥0";
         }
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
-
             if (cartItems.Count == 0)
             {
                 MessageBox.Show("商品を選択してください", "注文エラー", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -117,14 +98,11 @@ namespace OrderSystem.Views
 
             int orderId = DataAccess.SaveOrder(cartItems.Sum(c => c.Subtotal), cartItems);
             NavigationService.Navigate(new LastPage(cartItems, orderId));
-
         }
 
         private void ManagementBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Views.LoginPage());
         }
-
-
     }
 }
