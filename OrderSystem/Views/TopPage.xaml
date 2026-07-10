@@ -23,7 +23,7 @@
                             VerticalAlignment="Center" 
                             Margin="0,0,10,0">
                     <Button x:Name="CallStaffBtn" Content="店員呼出し" 
-                            Height="30" Width="80" Margin="0,0,5,0"
+                            Height="30" Width="100" Margin="0,0,5,0"
                             Background="#FFE74C3C" Click="CallStaffBtn_Click"/>
                     <Button x:Name="ManagementBtn" Content="管理" 
                             Height="30" Width="70"
@@ -41,15 +41,19 @@
 
             <StackPanel Grid.Column="0" VerticalAlignment="Top" Margin="20,20,0,0">
                 <Button x:Name="SetBtn" Content="🍽️ セット" 
+                        FontSize="10"
                         Height="50" Width="80" Margin="0,0,0,10"
                         Background="#FFE67E22" Click="SetBtn_Click"/>
                 <Button x:Name="SingleBtn" Content="🍛 単品" 
+                        FontSize="10"
                         Height="50" Width="80" Margin="0,0,0,10"
                         Background="#FF27AE60" Click="SingleBtn_Click"/>
                 <Button x:Name="DrinkBtn" Content="🥤 ドリンク" 
+                        FontSize="10"
                         Height="50" Width="80" Margin="0,0,0,10"
                         Background="#FF2980B9" Click="DrinkBtn_Click"/>
                 <Button x:Name="SideBtn" Content="🍟 サイド" 
+                        FontSize="10"
                         Height="50" Width="80"
                         Background="#FF8E44AD" Click="SideBtn_Click"/>
             </StackPanel>
