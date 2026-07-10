@@ -46,7 +46,7 @@
                 Background="#FF95A5A6" Click="BackBtn_Click"/>
 
         <DataGrid x:Name="ListDataGrid"  
-                  Margin="15,110,390,50"
+                  Margin="15,110,340,50"
                   AutoGenerateColumns="False"
                   Background="White" RowHeight="28">
             <DataGrid.Resources>
@@ -92,7 +92,7 @@
         </DataGrid>
 
         <Border Background="White" CornerRadius="6"
-                HorizontalAlignment="Left" Margin="160,0,0,10"
+                HorizontalAlignment="Left" Margin="220,0,0,10"
                 VerticalAlignment="Bottom" Width="140" Height="32">
             <TextBlock x:Name="TotalSumTxtBlock" Text="合計: ¥0" 
                        FontSize="16" FontWeight="Bold"

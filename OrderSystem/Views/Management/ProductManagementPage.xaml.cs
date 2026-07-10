@@ -125,6 +125,7 @@ namespace OrderSystem.Views
             ProductNameTxtBox.Text = "";
             ProductPriceTxtBox.Text = "";
             CategoryComboBox.SelectedIndex = -1;
+            LoadItems();
         }
 
         private void ClearBtn_Click(object sender, RoutedEventArgs e)

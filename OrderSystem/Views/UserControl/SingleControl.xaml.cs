@@ -29,7 +29,7 @@ namespace OrderSystem.Views
             {
                 var btn = new Button
                 {
-                    Content = $"{product.ProductName}\n¥{product.Price}",
+                    Content = $"🍛 {product.ProductName}\n¥{product.Price}",
                     Width = 110,
                     Height = 70,
                     Margin = new Thickness(10),
