@@ -41,7 +41,7 @@
                 Background="#FF95A5A6" Click="ClearBtn_Click"/>
 
         <Button x:Name="BackBtn" Content="← 戻る" 
-                HorizontalAlignment="Left" Margin="600,10,0,0" 
+                HorizontalAlignment="Left" Margin="20,10,0,0" 
                 VerticalAlignment="Top" Height="35" Width="70"
                 Background="#FF95A5A6" Click="BackBtn_Click"/>
 
@@ -59,7 +59,7 @@
             </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="商品" 
-                                    Binding="{Binding ProductName}" Width="*"/>
+                                    Binding="{Binding ProductName}" Width="120"/>
                 <DataGridTextColumn Header="単価" 
                                     Binding="{Binding Price}" Width="*"/>
                 <DataGridTextColumn Header="個数"   
@@ -70,7 +70,7 @@
         </DataGrid>
 
         <DataGrid x:Name="OrderDataGrid"  
-                  Margin="390,110,15,50"
+                  Margin="380,110,15,50"
                   AutoGenerateColumns="False"
                   Background="White" RowHeight="28">
             <DataGrid.Resources>
@@ -83,9 +83,9 @@
             </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="注文ID" 
-                                    Binding="{Binding OrderId}" Width="45"/>
+                                    Binding="{Binding OrderId}" Width="60"/>
                 <DataGridTextColumn Header="日時" 
-                                    Binding="{Binding DateTime}" Width="120"/>
+                                    Binding="{Binding DateTime}" Width="140"/>
                 <DataGridTextColumn Header="合計"   
                                     Binding="{Binding TotalAmount}" Width="*"/>
             </DataGrid.Columns>

@@ -67,7 +67,7 @@
 
         <Button x:Name="BackBtn" Content="← トップに戻る" 
                 HorizontalAlignment="Left" Margin="20,15,0,0" 
-                VerticalAlignment="Top" Width="110" Height="30"
+                VerticalAlignment="Top" Width="120" Height="30"
                 Background="#FF95A5A6" Click="BackBtn_Click"/>
     </Grid>
 </Page>

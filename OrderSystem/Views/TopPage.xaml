@@ -81,7 +81,7 @@
                     </DataGrid.Resources>
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="商品" 
-                                            Binding="{Binding ProductName}" Width="*"/>
+                                            Binding="{Binding ProductName}" Width="110"/>
                         <DataGridTextColumn Header="単価" 
                                             Binding="{Binding Price}" Width="60"/>
                         <DataGridTextColumn Header="個数"   

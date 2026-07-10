@@ -29,9 +29,10 @@ namespace OrderSystem.Views
             {
                 var btn = new Button
                 {
-                    Content = $"🍛 {product.ProductName}\n¥{product.Price}",
+                    Content = $"{product.ProductName}\n¥{product.Price}",
                     Width = 110,
                     Height = 70,
+                    FontSize = 9,
                     Margin = new Thickness(10),
                     Tag = product,
                     Background = (Brush)new BrushConverter().ConvertFrom("#FF27AE60")
