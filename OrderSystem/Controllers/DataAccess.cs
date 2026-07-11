@@ -45,7 +45,6 @@ namespace OrderSystem
             {
                 var admin = context.Admins
                     .FirstOrDefault(a => a.AdminId == id && a.Password == password);
-
                 return admin != null;
             }
         }

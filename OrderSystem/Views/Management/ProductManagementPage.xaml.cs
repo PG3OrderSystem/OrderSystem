@@ -30,6 +30,28 @@ namespace OrderSystem.Views
             }
         }
 
+
+        public void LoadItemsOnBox()
+        {
+            try
+            {
+                var products = DataAccess.GetAllProducts();
+                ProductIdTxtBox.Text = products.FirstOrDefault()?.ProductId ?? string.Empty;
+                ProductNameTxtBox.Text = products.FirstOrDefault()?.ProductName ?? string.Empty;
+                ProductPriceTxtBox.Text = products.FirstOrDefault()?.Price.ToString() ?? string.Empty;
+                var category = products.FirstOrDefault()?.Category ?? string.Empty;
+
+                CategoryComboBox.SelectedItem = CategoryComboBox.Items
+                    .Cast<ComboBoxItem>()
+                    .FirstOrDefault(item => item.Content.ToString() == category);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "一覧表示エラー",
+                MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -107,6 +129,7 @@ namespace OrderSystem.Views
                 if (results.Any())
                 {
                     dataGridProducts.ItemsSource = results;
+                    LoadItemsOnBox();
                 }
                 else
                 {
