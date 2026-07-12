@@ -31,24 +31,21 @@ namespace OrderSystem.Views
         }
 
 
-        public void LoadItemsOnBox()
+        private void LoadItemsOnTxtBox(Products product)
         {
-            try
-            {
-                var products = DataAccess.GetAllProducts();
-                ProductIdTxtBox.Text = products.FirstOrDefault()?.ProductId ?? string.Empty;
-                ProductNameTxtBox.Text = products.FirstOrDefault()?.ProductName ?? string.Empty;
-                ProductPriceTxtBox.Text = products.FirstOrDefault()?.Price.ToString() ?? string.Empty;
-                var category = products.FirstOrDefault()?.Category ?? string.Empty;
+            ProductIdTxtBox.Text = product.ProductId;
+            ProductNameTxtBox.Text = product.ProductName;
+            ProductPriceTxtBox.Text = product.Price.ToString();
+            CategoryComboBox.SelectedItem = CategoryComboBox.Items
+                .Cast<ComboBoxItem>()
+                .FirstOrDefault(item => item.Content.ToString() == product.Category);
+        }
 
-                CategoryComboBox.SelectedItem = CategoryComboBox.Items
-                    .Cast<ComboBoxItem>()
-                    .FirstOrDefault(item => item.Content.ToString() == category);
-            }
-            catch (Exception ex)
+        private void dataGridProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dataGridProducts.SelectedItem is Products selected)
             {
-                MessageBox.Show(ex.Message, "一覧表示エラー",
-                MessageBoxButton.OK, MessageBoxImage.Error);
+                LoadItemsOnTxtBox(selected);
             }
         }
 
@@ -64,7 +61,8 @@ namespace OrderSystem.Views
                     Category = (CategoryComboBox.SelectedItem as ComboBoxItem)?.Content.ToString()
                 };
                 DataAccess.AddProduct(products);
-                MessageBox.Show("情報を追加しました。");
+                MessageBox.Show("情報を追加しました。","情報",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
                 LoadItems();
                 Clear();
             }
@@ -124,12 +122,12 @@ namespace OrderSystem.Views
                 string priceText = ProductPriceTxtBox.Text.Trim();
                 string category = (CategoryComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
 
-                var results = DataAccess.SearchProducts(id, name, category, priceText);
+                var results = DataAccess.SearchProducts(id, name, priceText, category);
 
                 if (results.Any())
                 {
                     dataGridProducts.ItemsSource = results;
-                    LoadItemsOnBox();
+                    LoadItemsOnTxtBox(results.First());
                 }
                 else
                 {

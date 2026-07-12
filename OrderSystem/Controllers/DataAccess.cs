@@ -59,6 +59,13 @@ namespace OrderSystem
             }
         }
 
+        public static Products? GetProductById(string productId)
+        {
+            using (var context = new OrderDBContext())
+            {
+                return context.Products.FirstOrDefault(x => x.ProductId == productId);
+            }
+        }
 
 
 
@@ -100,7 +107,7 @@ namespace OrderSystem
             }
         }
 
-        public static List<Products> SearchProducts(string id, string name, string category, string priceText)
+        public static List<Products> SearchProducts(string id, string name, string priceText, string category)
         {
             using (var context = new OrderDBContext())
             {

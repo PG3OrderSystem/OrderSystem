@@ -68,7 +68,8 @@
         <DataGrid x:Name="dataGridProducts"  
                   Margin="50,190,50,32"
                   AutoGenerateColumns="False"
-                  Background="White" RowHeight="28">
+                  Background="White" RowHeight="28"
+                  SelectionChanged="dataGridProducts_SelectionChanged">
             <DataGrid.Resources>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="Background" Value="#FF2C3E50"/>
