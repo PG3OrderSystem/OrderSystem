@@ -36,8 +36,7 @@ namespace OrderSystem.Views
             ProductIdTxtBox.Text = product.ProductId;
             ProductNameTxtBox.Text = product.ProductName;
             ProductPriceTxtBox.Text = product.Price.ToString();
-            CategoryComboBox.SelectedItem = CategoryComboBox.Items
-                .Cast<ComboBoxItem>()
+            CategoryComboBox.SelectedItem = CategoryComboBox.Items.Cast<ComboBoxItem>()
                 .FirstOrDefault(item => item.Content.ToString() == product.Category);
         }
 

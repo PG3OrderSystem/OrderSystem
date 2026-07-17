@@ -56,7 +56,7 @@
                 <Button x:Name="DeleteBtn" Content="削除" 
                         Width="65" Height="32"
                         Background="#FFE74C3C" Click="DeleteBtn_Click" Margin="0,0,10,0"/>
-                <Button x:Name="SearchBtn" Content="検索" 
+                <Button x:Name="SearchBtn" Content="検索" IsDefault="True"
                         Width="65" Height="32"
                         Background="#FF8E44AD" Click="SearchBtn_Click" Margin="0,0,10,0"/>
                 <Button x:Name="ClearBtn" Content="クリア" 
